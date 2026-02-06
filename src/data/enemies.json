@@ -1,0 +1,58 @@
+[
+  {
+    "id": "fc-spreadsheet",
+    "teamName": "FC Spreadsheet",
+    "threatLevel": 5,
+    "record": {
+      "wins": 2,
+      "losses": 6,
+      "draws": 1
+    },
+    "description": "A terrifyingly well-organized team of finance bros who run a 4-3-3 with the precision of a quarterly earnings call. They have matching custom boots, a dedicated analytics intern, and a hydration strategy. We hate them.",
+    "reasonForEnmity": "Their captain once told Big Dave that GIPP's formation 'lacked synergy.' Dave hasn't slept properly since. Also they beat us 7-0 in the 2023 Spring Cup and their bench celebrated with a coordinated TikTok dance.",
+    "logo": "/enemies/placeholder.jpg",
+    "lastEncounter": "2024-09-14"
+  },
+  {
+    "id": "the-sunday-dribblers",
+    "teamName": "The Sunday Dribblers",
+    "threatLevel": 3,
+    "record": {
+      "wins": 4,
+      "losses": 3,
+      "draws": 2
+    },
+    "description": "A chaotic collection of hungover twenty-somethings who somehow keep beating teams that should be better than them. Their strength is that they have absolutely nothing to lose because they barely remember signing up.",
+    "reasonForEnmity": "They once showed up 20 minutes late, missing a player, wearing mismatched kits — and still beat us 3-1. The disrespect was profound and deeply felt.",
+    "logo": "/enemies/placeholder.jpg",
+    "lastEncounter": "2024-10-05"
+  },
+  {
+    "id": "williamsburg-athletic",
+    "teamName": "Williamsburg Athletic Club",
+    "threatLevel": 4,
+    "record": {
+      "wins": 3,
+      "losses": 5,
+      "draws": 0
+    },
+    "description": "Boutique-kit-wearing artisanal footballers who press like their lives depend on it and have a branded Substack that recaps their matches in iambic pentameter. Their warm-up involves synchronized breathwork.",
+    "reasonForEnmity": "They referred to us as 'charmingly unpolished' in their newsletter. It was meant as a compliment. We chose violence anyway. Also their kits are genuinely nicer than ours, which stings.",
+    "logo": "/enemies/placeholder.jpg",
+    "lastEncounter": "2024-08-22"
+  },
+  {
+    "id": "park-slope-united",
+    "teamName": "Park Slope United",
+    "threatLevel": 2,
+    "record": {
+      "wins": 5,
+      "losses": 2,
+      "draws": 1
+    },
+    "description": "A team of dads who are technically in decline but play with the desperate energy of men who have exactly 90 minutes of freedom per week. Surprisingly good at set pieces because their coach used to play D3 college ball.",
+    "reasonForEnmity": "Low-key rivalry. They keep bringing orange slices and offering them to us at halftime, which feels condescending even though the orange slices are great. Their keeper once saved a penalty and immediately asked if everyone was having fun.",
+    "logo": "/enemies/placeholder.jpg",
+    "lastEncounter": "2024-11-02"
+  }
+]
