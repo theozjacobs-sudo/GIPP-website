@@ -17,13 +17,13 @@ export default function BlogListingPage() {
   return (
     <>
       {/* Header strip */}
-      <section className="relative overflow-hidden bg-gipp-red-dark px-4 py-16">
+      <section className="relative overflow-hidden bg-gipp-red-dark px-4 py-20 grain">
         <GeometricPattern colorScheme="dark" opacity={0.12} />
         <div className="relative z-10 mx-auto max-w-4xl text-center">
-          <h1 className="font-sans text-4xl font-bold tracking-tight text-gipp-cream sm:text-5xl">
+          <h1 className="font-sans text-5xl font-black uppercase tracking-tight text-gipp-cream sm:text-6xl">
             Dispatches from the Pitch
           </h1>
-          <p className="mt-3 text-lg text-gipp-cream/70">
+          <p className="mt-4 text-lg text-gipp-cream/70 max-w-xl mx-auto">
             Match reports, tactical musings, and behind-the-scenes stories from
             the GIPP gazette.
           </p>

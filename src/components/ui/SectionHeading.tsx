@@ -32,18 +32,18 @@ function SectionHeading({
         className,
       )}
     >
-      <h2 className="font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+      <h2 className="font-sans text-4xl font-black uppercase tracking-tight text-gray-900 sm:text-5xl">
         {children}
       </h2>
 
       {subtitle && (
-        <p className="mt-2 text-lg text-gray-600">{subtitle}</p>
+        <p className="mt-2 uppercase text-sm tracking-widest text-gray-500">{subtitle}</p>
       )}
 
       {/* Decorative orange line */}
       <div
         className={cn(
-          'mt-4 h-1 w-16 rounded-full bg-gipp-orange',
+          'mt-4 h-1.5 w-24 bg-gipp-orange',
           align === 'center' && 'mx-auto',
         )}
         aria-hidden="true"

@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { Heart, MapPin, Smile, Flame } from 'lucide-react';
 import { GeometricPattern } from '@/components/ui/GeometricPattern';
 import { SectionHeading } from '@/components/ui/SectionHeading';
-import { Card } from '@/components/ui/Card';
 import { RecruitForm } from '@/components/forms/RecruitForm';
 
 export const metadata: Metadata = {
@@ -56,64 +55,65 @@ export default function RecruitPage() {
   return (
     <>
       {/* Header */}
-      <section className="relative overflow-hidden bg-gipp-orange py-16 sm:py-20">
+      <section className="relative overflow-hidden bg-gipp-orange py-20 grain">
         <GeometricPattern colorScheme="orange" opacity={0.15} />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            align="center"
-            className="text-white [&>p]:text-white/70"
-            subtitle="Think you have what it takes?"
-          >
+          <h1 className="text-center text-5xl font-black uppercase tracking-tight text-white sm:text-6xl text-shadow-brutal">
             Join the Ranks
-          </SectionHeading>
+          </h1>
+          <p className="mt-4 text-center text-lg text-white/70">
+            Think you have what it takes?
+          </p>
         </div>
       </section>
 
       {/* What we're looking for */}
       <section className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
-        <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">
+        <h2 className="text-2xl font-black uppercase tracking-wider text-gray-900 mb-8 text-center">
           What We&apos;re Looking For
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {QUALITIES.map(({ icon: Icon, title, description }) => (
-            <Card key={title} variant="bordered" padding="md">
+            <div key={title} className="rounded-none border-2 border-gray-900 bg-white p-5 shadow-brutal transition-transform hover:-translate-y-1">
               <div className="flex gap-4">
                 <div className="flex-shrink-0">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gipp-orange/10">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-none border-2 border-gray-900 bg-gipp-orange/10">
                     <Icon className="h-5 w-5 text-gipp-orange" aria-hidden="true" />
                   </div>
                 </div>
                 <div>
-                  <h3 className="font-bold text-gray-900">{title}</h3>
+                  <h3 className="font-black uppercase tracking-wider text-gray-900">{title}</h3>
                   <p className="mt-1 text-sm text-gray-600">{description}</p>
                 </div>
               </div>
-            </Card>
+            </div>
           ))}
         </div>
       </section>
 
       {/* Form */}
       <section className="mx-auto max-w-2xl px-4 py-12 sm:px-6 lg:px-8">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">Apply</h2>
+        <h2 className="text-2xl font-black uppercase tracking-wider text-gray-900 mb-6">Apply</h2>
         <RecruitForm />
       </section>
 
-      {/* FAQ */}
-      <section className="bg-gipp-cream-light py-12">
-        <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">FAQ</h2>
+      {/* FAQ — dark dossier section */}
+      <section className="relative bg-gray-950 py-16 grain">
+        <div className="relative z-10 mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-black uppercase tracking-wider text-gipp-cream mb-8">
+            Dossier <span className="text-gipp-orange">{"//"}</span> FAQ
+          </h2>
           <div className="space-y-3">
             {FAQS.map(({ q, a }) => (
               <details
                 key={q}
-                className="group rounded-lg border border-gray-200 bg-white"
+                className="group rounded-none border-l-4 border-gipp-orange border-r border-t border-b border-r-gray-700 border-t-gray-700 border-b-gray-700 bg-gray-900"
               >
-                <summary className="flex cursor-pointer items-center justify-between px-5 py-4 font-semibold text-gray-900 hover:bg-gray-50 transition-colors">
+                <summary className="flex cursor-pointer items-center justify-between px-5 py-4 font-black uppercase tracking-wider text-sm text-gipp-cream hover:bg-gray-800 transition-colors">
                   {q}
                   <span className="ml-2 text-gipp-orange transition-transform group-open:rotate-45">+</span>
                 </summary>
-                <div className="px-5 pb-4 text-gray-600 leading-relaxed">
+                <div className="px-5 pb-4 text-gray-400 leading-relaxed">
                   {a}
                 </div>
               </details>

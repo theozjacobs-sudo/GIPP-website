@@ -23,17 +23,13 @@ export default function PhilosophyPage() {
   return (
     <>
       {/* Header */}
-      <section className="relative overflow-hidden bg-gipp-red-dark px-4 py-16">
+      <section className="relative overflow-hidden bg-gipp-red-dark px-4 py-20 grain">
         <GeometricPattern colorScheme="dark" opacity={0.12} />
         <div className="relative z-10 mx-auto max-w-4xl text-center">
-          <SectionHeading
-            align="center"
-            className="[&_h2]:text-gipp-cream [&_p]:text-gipp-cream/70 [&_div:last-child]:bg-gipp-cream"
-            subtitle=""
-          >
+          <h1 className="font-sans text-5xl font-black uppercase tracking-tight text-gipp-cream sm:text-7xl text-shadow-brutal">
             The Philosophy
-          </SectionHeading>
-          <p className="mt-2 font-script text-2xl text-gipp-cream/80">
+          </h1>
+          <p className="mt-4 font-script text-2xl text-gipp-cream/80">
             &ldquo;{SITE.motto}&rdquo;
           </p>
         </div>
@@ -41,19 +37,19 @@ export default function PhilosophyPage() {
 
       {/* Content */}
       <section className="mx-auto max-w-3xl px-4 py-16">
-        <div className="prose prose-lg max-w-3xl mx-auto prose-headings:text-gipp-orange-dark prose-a:text-gipp-orange">
+        <div className="prose prose-lg max-w-3xl mx-auto prose-headings:text-gipp-orange-dark prose-a:text-gipp-orange prose-blockquote:border-l-4 prose-blockquote:border-gipp-orange prose-blockquote:bg-gray-950 prose-blockquote:text-gipp-cream prose-blockquote:not-italic prose-blockquote:py-6 prose-blockquote:px-8 prose-blockquote:text-2xl prose-blockquote:font-black prose-blockquote:rounded-none">
           <MDXRemote source={content} />
         </div>
 
-        {/* Formation diagram */}
-        <div className="my-16">
-          <h3 className="mb-6 text-center text-xl font-bold text-gray-900">
+        {/* Formation diagram — dramatic dark section */}
+        <div className="relative my-16 -mx-4 bg-gray-950 px-4 py-16 grain overflow-hidden">
+          <h3 className="mb-8 text-center text-2xl font-black uppercase tracking-wider text-gipp-cream text-shadow-brutal">
             The 4-3-3
           </h3>
-          <div className="mx-auto max-w-md">
+          <div className="relative z-10 mx-auto max-w-md">
             <svg
               viewBox="0 0 400 560"
-              className="w-full"
+              className="w-full drop-shadow-2xl"
               aria-label="4-3-3 formation diagram"
               role="img"
             >
@@ -63,10 +59,10 @@ export default function PhilosophyPage() {
                 y="10"
                 width="380"
                 height="540"
-                rx="4"
-                fill="#2d8a4e"
-                stroke="#3da562"
-                strokeWidth="2"
+                rx="0"
+                fill="#1a1a1a"
+                stroke="#E8752A"
+                strokeWidth="3"
               />
 
               {/* Center line */}
@@ -75,8 +71,9 @@ export default function PhilosophyPage() {
                 y1="280"
                 x2="390"
                 y2="280"
-                stroke="#3da562"
+                stroke="#E8752A"
                 strokeWidth="1.5"
+                opacity="0.5"
               />
 
               {/* Center circle */}
@@ -85,8 +82,9 @@ export default function PhilosophyPage() {
                 cy="280"
                 r="50"
                 fill="none"
-                stroke="#3da562"
+                stroke="#E8752A"
                 strokeWidth="1.5"
+                opacity="0.5"
               />
 
               {/* Penalty areas */}
@@ -96,8 +94,9 @@ export default function PhilosophyPage() {
                 width="180"
                 height="80"
                 fill="none"
-                stroke="#3da562"
+                stroke="#E8752A"
                 strokeWidth="1.5"
+                opacity="0.5"
               />
               <rect
                 x="110"
@@ -105,8 +104,9 @@ export default function PhilosophyPage() {
                 width="180"
                 height="80"
                 fill="none"
-                stroke="#3da562"
+                stroke="#E8752A"
                 strokeWidth="1.5"
+                opacity="0.5"
               />
 
               {/* --- Players (4-3-3) --- */}
@@ -178,8 +178,8 @@ export default function PhilosophyPage() {
         </div>
 
         {/* Bottom CTA */}
-        <div className="mt-12 rounded-xl bg-gipp-cream/50 p-8 text-center">
-          <h3 className="text-2xl font-bold text-gray-900">
+        <div className="mt-12 border-2 border-gray-900 bg-gipp-cream/50 p-8 text-center shadow-brutal">
+          <h3 className="text-2xl font-black uppercase tracking-wider text-gray-900">
             Think You Fit the System?
           </h3>
           <p className="mt-2 text-gray-600">
@@ -188,7 +188,7 @@ export default function PhilosophyPage() {
           </p>
           <Link
             href="/recruit"
-            className="mt-6 inline-flex items-center justify-center rounded-lg bg-gipp-orange px-7 py-3.5 text-lg font-semibold text-white transition-colors duration-200 hover:bg-gipp-orange-dark"
+            className="mt-6 inline-flex items-center justify-center rounded-none border-2 border-gray-900 bg-gipp-orange px-7 py-3.5 text-lg font-black uppercase tracking-wider text-white shadow-brutal transition-all duration-200 hover:bg-gipp-orange-dark hover:-translate-y-0.5"
           >
             Apply to Join GIPP F.C.
           </Link>

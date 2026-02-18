@@ -47,34 +47,36 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <>
-      {/* Decorative header strip */}
-      <div className="relative overflow-hidden bg-gipp-red-dark px-4 py-12">
+      {/* Decorative header strip — thicker, with grain */}
+      <div className="relative overflow-hidden bg-gipp-red-dark px-4 py-20 grain">
         <GeometricPattern colorScheme="dark" opacity={0.12} />
         <div className="relative z-10" />
       </div>
 
-      {/* Article content */}
+      {/* Article content — brutal orange left border */}
       <article className="mx-auto max-w-3xl px-4 py-12">
-        {/* Title */}
-        <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-          {post.title}
-        </h1>
+        <div className="border-l-4 border-gipp-orange pl-6">
+          {/* Title */}
+          <h1 className="text-5xl font-black tracking-tight text-gray-900 sm:text-6xl">
+            {post.title}
+          </h1>
 
-        {/* Author and date */}
-        <div className="mt-4">
-          <AuthorBadge author={post.author} date={post.date} />
-        </div>
-
-        {/* Tags */}
-        {post.tags.length > 0 && (
-          <div className="mt-4 flex flex-wrap gap-2">
-            {post.tags.map((tag) => (
-              <Badge key={tag} variant="outline" size="sm">
-                {tag}
-              </Badge>
-            ))}
+          {/* Author and date */}
+          <div className="mt-4">
+            <AuthorBadge author={post.author} date={post.date} />
           </div>
-        )}
+
+          {/* Tags */}
+          {post.tags.length > 0 && (
+            <div className="mt-4 flex flex-wrap gap-2">
+              {post.tags.map((tag) => (
+                <Badge key={tag} variant="outline" size="sm">
+                  <span className="uppercase tracking-wider text-xs">{tag}</span>
+                </Badge>
+              ))}
+            </div>
+          )}
+        </div>
 
         {/* Divider */}
         <hr className="my-8 border-gipp-orange/20" />
@@ -85,10 +87,10 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
         </div>
 
         {/* Back link */}
-        <div className="mt-12 border-t border-gray-200 pt-8">
+        <div className="mt-12 border-t-2 border-gray-900 pt-8">
           <Link
             href="/blog"
-            className="inline-flex items-center text-gipp-orange font-semibold transition-colors hover:text-gipp-orange-dark"
+            className="inline-flex items-center text-gipp-orange font-black uppercase tracking-wider text-sm transition-colors hover:text-gipp-orange-dark"
           >
             &larr; Back to all posts
           </Link>

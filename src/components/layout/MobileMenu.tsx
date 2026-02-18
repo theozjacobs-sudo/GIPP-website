@@ -100,8 +100,8 @@ export default function MobileMenu() {
         onClick={open}
         className={cn(
           "relative z-50 inline-flex items-center justify-center rounded-md p-2",
-          "text-gray-700 hover:text-gipp-orange hover:bg-gipp-orange/5",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gipp-orange focus-visible:ring-offset-2",
+          "text-white hover:text-gipp-orange",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gipp-orange focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950",
           "transition-colors"
         )}
         aria-expanded={isOpen}
@@ -133,15 +133,15 @@ export default function MobileMenu() {
         aria-label="Navigation menu"
         className={cn(
           "fixed inset-y-0 right-0 z-[70] w-full max-w-sm",
-          "bg-white shadow-2xl",
+          "bg-gray-950 shadow-2xl",
           "transform transition-transform duration-300 ease-in-out",
           isOpen ? "translate-x-0" : "translate-x-full"
         )}
       >
         <div className="flex h-full flex-col">
           {/* Close Button */}
-          <div className="flex items-center justify-between border-b border-gipp-cream/60 px-6 py-4">
-            <span className="text-lg font-bold tracking-tight text-gray-900">
+          <div className="flex items-center justify-between border-b border-white/10 px-6 py-4">
+            <span className="text-lg font-black uppercase tracking-widest text-white">
               {SITE.abbreviation}
             </span>
             <button
@@ -149,8 +149,8 @@ export default function MobileMenu() {
               onClick={close}
               className={cn(
                 "inline-flex items-center justify-center rounded-md p-2",
-                "text-gray-700 hover:text-gipp-orange hover:bg-gipp-orange/5",
-                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gipp-orange focus-visible:ring-offset-2",
+                "text-white hover:text-gipp-orange",
+                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gipp-orange focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950",
                 "transition-colors"
               )}
               aria-label="Close navigation menu"
@@ -173,11 +173,11 @@ export default function MobileMenu() {
                       href={link.href}
                       onClick={close}
                       className={cn(
-                        "block rounded-lg px-4 py-3 text-base font-medium transition-colors",
-                        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gipp-orange focus-visible:ring-offset-2",
+                        "block rounded-none px-4 py-3 text-base font-medium transition-colors",
+                        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gipp-orange focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950",
                         isActive
                           ? "bg-gipp-orange/10 text-gipp-orange border-l-4 border-gipp-orange"
-                          : "text-gray-700 hover:bg-gipp-cream-light hover:text-gipp-orange"
+                          : "text-white/70 hover:bg-white/5 hover:text-gipp-orange"
                       )}
                       aria-current={isActive ? "page" : undefined}
                     >
@@ -190,8 +190,8 @@ export default function MobileMenu() {
           </nav>
 
           {/* Motto at Bottom */}
-          <div className="border-t border-gipp-cream/60 px-6 py-6">
-            <p className="font-script text-xl text-gipp-orange-muted text-center italic leading-relaxed">
+          <div className="border-t border-white/10 px-6 py-6">
+            <p className="font-script text-xl text-gipp-orange text-center italic leading-relaxed">
               &ldquo;{SITE.motto}&rdquo;
             </p>
           </div>

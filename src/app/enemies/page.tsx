@@ -17,14 +17,17 @@ export default function EnemiesPage() {
   return (
     <>
       {/* Dramatic header */}
-      <section className="relative overflow-hidden bg-gipp-red-dark py-20 sm:py-24">
+      <section className="relative overflow-hidden bg-gipp-red-dark py-20 sm:py-24 grain">
         <GeometricPattern colorScheme="dark" opacity={0.2} />
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <Eye
             className="mx-auto mb-4 h-10 w-10 text-gipp-cream/60"
             aria-hidden="true"
           />
-          <h1 className="text-4xl sm:text-5xl font-black uppercase tracking-widest text-gipp-cream">
+          <div className="mb-6">
+            <span className="stamp text-gipp-cream/20 text-sm">Classified</span>
+          </div>
+          <h1 className="text-6xl sm:text-7xl font-black uppercase tracking-widest text-gipp-cream">
             The Enemies List
           </h1>
           <p className="mt-4 text-lg text-gipp-cream/70">

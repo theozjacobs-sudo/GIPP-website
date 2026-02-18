@@ -25,7 +25,7 @@ export function PlayerCard({ player }: { player: Player }) {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <Card variant="elevated" padding="none" className="overflow-hidden">
+    <Card variant="elevated" padding="none" className="overflow-hidden rounded-none">
       <button
         onClick={() => setExpanded(!expanded)}
         className="w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-gipp-orange focus-visible:ring-inset"
@@ -35,15 +35,15 @@ export function PlayerCard({ player }: { player: Player }) {
         {/* Jersey number hero */}
         <div
           className={cn(
-            'relative h-48 bg-gradient-to-br flex items-center justify-center',
+            'relative h-48 bg-gradient-to-br flex items-center justify-center grain',
             POSITION_COLORS[player.position]
           )}
         >
-          <span className="text-8xl font-black text-white/20 select-none">
+          <span className="relative z-10 text-9xl font-black text-white/25 select-none">
             {player.number}
           </span>
           {player.isCaptain && (
-            <div className="absolute top-3 right-3 bg-gipp-cream rounded-full p-1.5">
+            <div className="absolute top-3 right-3 z-10 bg-gipp-cream rounded-full p-1.5">
               <Star className="h-4 w-4 text-gipp-orange fill-gipp-orange" aria-hidden="true" />
             </div>
           )}

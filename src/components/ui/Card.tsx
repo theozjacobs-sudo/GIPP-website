@@ -2,10 +2,10 @@ import React from 'react';
 import { cn } from '@/lib/utils';
 
 const variantStyles = {
-  default: 'bg-white shadow-sm',
+  default: 'bg-white shadow-sm border border-gray-200',
   elevated:
-    'bg-white shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300',
-  bordered: 'bg-white border border-gipp-orange/20',
+    'bg-white shadow-brutal transition-all duration-200 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-brutal-lg',
+  bordered: 'bg-white border-2 border-gipp-orange',
 } as const;
 
 const paddingStyles = {
@@ -27,9 +27,9 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
 /**
  * Content card for the GIPP F.C. design system.
  *
- * - `default`  – subtle shadow
- * - `elevated` – larger shadow, lifts on hover
- * - `bordered` – orange-tinted border
+ * - `default`  – subtle shadow with border
+ * - `elevated` – brutal shadow, shifts on hover
+ * - `bordered` – thick orange border
  */
 const Card = React.forwardRef<HTMLDivElement, CardProps>(function Card(
   { variant = 'default', padding = 'md', className, children, ...rest },
@@ -39,7 +39,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(function Card(
     <div
       ref={ref}
       className={cn(
-        'rounded-xl overflow-hidden',
+        'rounded-none overflow-hidden',
         variantStyles[variant],
         paddingStyles[padding],
         className,

@@ -12,10 +12,10 @@ export function EnemyCard({ enemy }: { enemy: Enemy }) {
         : 'border-l-gipp-orange-light';
 
   return (
-    <Card variant="bordered" padding="lg" className={`border-l-4 ${borderColor}`}>
-      <div className="flex flex-col gap-4">
+    <Card variant="bordered" padding="lg" className={`relative border-l-[6px] ${borderColor} grain`}>
+      <div className="relative z-10 flex flex-col gap-4">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-          <h3 className="text-xl font-bold text-gray-900">{enemy.teamName}</h3>
+          <h3 className="text-xl font-bold uppercase tracking-wide text-gray-900">{enemy.teamName}</h3>
           <ThreatMeter level={enemy.threatLevel} />
         </div>
 
@@ -32,7 +32,7 @@ export function EnemyCard({ enemy }: { enemy: Enemy }) {
         </div>
 
         <div>
-          <span className="text-xs font-semibold uppercase tracking-wide text-gray-400">
+          <span className="text-xs font-bold uppercase tracking-widest text-gipp-red">
             Reason for Enmity
           </span>
           <p className="mt-1 italic text-gray-700">{enemy.reasonForEnmity}</p>

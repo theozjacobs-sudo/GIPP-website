@@ -9,7 +9,7 @@ function ChampionshipStars({ count }: { count: number }) {
       {Array.from({ length: count }, (_, i) => (
         <svg
           key={i}
-          className="h-3 w-3 text-gipp-cream fill-current"
+          className="h-3 w-3 text-gipp-orange fill-current"
           viewBox="0 0 20 20"
           aria-hidden="true"
         >
@@ -23,19 +23,19 @@ function ChampionshipStars({ count }: { count: number }) {
 export default function Header() {
   return (
     <header
-      className="sticky top-0 z-50 w-full border-b border-gipp-cream/50 bg-white/95 backdrop-blur-sm supports-[backdrop-filter]:bg-white/80"
+      className="sticky top-0 z-50 w-full border-b-2 border-gipp-orange bg-gray-950/95 backdrop-blur-sm supports-[backdrop-filter]:bg-gray-950/80"
       role="banner"
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Left: Logo area with stars + abbreviation */}
         <Link
           href="/"
-          className="group flex items-center gap-2.5 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gipp-orange focus-visible:ring-offset-2"
+          className="group flex items-center gap-2.5 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gipp-orange focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950"
           aria-label={`${SITE.name} - Home`}
         >
           <div className="flex flex-col items-center gap-0.5">
             <ChampionshipStars count={SITE.logoStars} />
-            <span className="text-xl font-bold tracking-tight text-gray-900 transition-colors group-hover:text-gipp-orange">
+            <span className="text-xl font-black uppercase tracking-widest text-white transition-colors group-hover:text-gipp-orange">
               {SITE.abbreviation}
             </span>
           </div>

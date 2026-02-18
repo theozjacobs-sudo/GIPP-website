@@ -17,16 +17,18 @@ export default function TeamPage() {
   return (
     <>
       {/* Header */}
-      <section className="relative overflow-hidden bg-gipp-orange py-16 sm:py-20">
+      <section className="relative overflow-hidden bg-gipp-orange py-16 sm:py-20 grain">
         <GeometricPattern colorScheme="orange" opacity={0.15} />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            align="center"
-            className="text-white [&>p]:text-white/70"
-            subtitle="The players who make it happen. Most Tuesdays."
-          >
-            Meet the Squad
-          </SectionHeading>
+          <div className="mb-8 text-center">
+            <h2 className="font-sans text-4xl sm:text-5xl font-black uppercase tracking-tight text-white">
+              Meet the Squad
+            </h2>
+            <p className="mt-2 font-script text-xl italic text-white/70">
+              The players who make it happen. Most Tuesdays.
+            </p>
+            <div className="mt-4 h-1.5 w-24 bg-white mx-auto" aria-hidden="true" />
+          </div>
         </div>
       </section>
 

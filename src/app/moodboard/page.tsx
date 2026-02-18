@@ -21,16 +21,15 @@ export default async function MoodboardPage() {
   return (
     <>
       {/* Header */}
-      <section className="relative overflow-hidden bg-gipp-orange py-16 sm:py-20">
+      <section className="relative overflow-hidden bg-gipp-orange py-20 grain">
         <GeometricPattern colorScheme="orange" opacity={0.15} />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            align="center"
-            className="text-white [&>p]:text-white/70"
-            subtitle="What's inspiring the squad this week"
-          >
+          <h1 className="text-center text-5xl font-black uppercase tracking-tight text-white sm:text-6xl text-shadow-brutal">
             The Moodboard
-          </SectionHeading>
+          </h1>
+          <p className="mt-4 text-center text-lg text-white/70">
+            What&apos;s inspiring the squad this week
+          </p>
         </div>
       </section>
 
@@ -39,10 +38,12 @@ export default async function MoodboardPage() {
         <MoodboardGrid items={sorted} />
       </section>
 
-      {/* Form */}
-      <section className="bg-gipp-cream-light py-12">
-        <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Post Something</h2>
+      {/* Form — dark contrast section */}
+      <section className="relative bg-gray-950 py-16 grain">
+        <div className="relative z-10 mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-black uppercase tracking-wider text-gipp-cream mb-6">
+            Post Something
+          </h2>
           <MoodboardForm />
         </div>
       </section>
