@@ -6,11 +6,6 @@ import { NAV_LINKS } from "@/data/navigation";
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
-  // Split nav links into two columns
-  const midpoint = Math.ceil(NAV_LINKS.length / 2);
-  const leftColumnLinks = NAV_LINKS.slice(0, midpoint);
-  const rightColumnLinks = NAV_LINKS.slice(midpoint);
-
   return (
     <footer className="relative border-t-4 border-gipp-orange bg-gray-950 grain text-white" role="contentinfo">
       <div className="relative z-10 mx-auto max-w-7xl px-4 pt-16 pb-8 sm:px-6 lg:px-8">
@@ -22,9 +17,9 @@ export default function Footer() {
         </div>
 
         {/* Main footer grid */}
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
           {/* Column 1: Team Info */}
-          <div className="sm:col-span-2 lg:col-span-1">
+          <div>
             <h2 className="text-sm font-semibold uppercase tracking-widest text-gipp-orange">
               {SITE.name}
             </h2>
@@ -36,13 +31,13 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Column 2: Nav Links (left half) */}
+          {/* Column 2: Nav Links */}
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-widest text-gipp-orange">
               Navigate
             </h3>
             <ul className="mt-3 space-y-2" role="list">
-              {leftColumnLinks.map((link) => (
+              {NAV_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
@@ -55,26 +50,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Nav Links (right half) */}
-          <div>
-            <h3 className="text-sm font-semibold uppercase tracking-widest text-gipp-orange">
-              More
-            </h3>
-            <ul className="mt-3 space-y-2" role="list">
-              {rightColumnLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-white/50 transition-colors hover:text-gipp-orange focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gipp-orange focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950 rounded-sm"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Column 4: Social & League */}
+          {/* Column 3: Social & League */}
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-widest text-gipp-orange">
               Connect
