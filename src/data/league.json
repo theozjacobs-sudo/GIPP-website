@@ -1,0 +1,72 @@
+{
+  "season": "Spring 2026",
+  "league": "9-A-SIDE",
+  "venue": "Pier 5, Brooklyn Bridge Park",
+  "playoffSpots": 4,
+  "myTeamId": "gipp",
+  "sourceUrl": "https://www.group-stage.com/9v9-pier5-brooklyn-fixtures/",
+  "lastUpdated": "2026-04-28",
+  "teams": [
+    { "id": "99c-fresh", "name": "99c Fresh FC", "shortName": "99c Fresh" },
+    { "id": "corinthians", "name": "Corinthians", "shortName": "Corinthians" },
+    { "id": "ag-wave", "name": "AG Wave & Co", "shortName": "AG Wave" },
+    { "id": "gorges", "name": "Gorges Touch", "shortName": "Gorges" },
+    { "id": "gipp", "name": "Good Intent Poor Product FC", "shortName": "GIPP" },
+    { "id": "lowen", "name": "Löwen FC", "shortName": "Löwen" },
+    { "id": "sharples", "name": "Sharples Wednesday", "shortName": "Sharples" },
+    { "id": "wanderers", "name": "Wanderers", "shortName": "Wanderers" },
+    { "id": "pickup", "name": "Pickup FC", "shortName": "Pickup" },
+    { "id": "first-touch", "name": "First Touch FC", "shortName": "First Touch" }
+  ],
+  "matches": [
+    { "matchday": 1, "date": "2026-03-10", "home": "gorges", "away": "corinthians", "homeScore": 3, "awayScore": 1 },
+    { "matchday": 1, "date": "2026-03-10", "home": "gipp", "away": "first-touch", "homeScore": 1, "awayScore": 2 },
+    { "matchday": 1, "date": "2026-03-10", "home": "wanderers", "away": "sharples", "homeScore": 0, "awayScore": 8 },
+    { "matchday": 1, "date": "2026-03-10", "home": "99c-fresh", "away": "ag-wave", "homeScore": 6, "awayScore": 3 },
+
+    { "matchday": 2, "date": "2026-03-17", "home": "ag-wave", "away": "wanderers", "homeScore": 5, "awayScore": 1 },
+    { "matchday": 2, "date": "2026-03-17", "home": "sharples", "away": "gorges", "homeScore": 6, "awayScore": 0 },
+    { "matchday": 2, "date": "2026-03-17", "home": "lowen", "away": "first-touch", "homeScore": 6, "awayScore": 2 },
+    { "matchday": 2, "date": "2026-03-17", "home": "pickup", "away": "corinthians", "homeScore": 2, "awayScore": 3 },
+
+    { "matchday": 3, "date": "2026-03-24", "home": "sharples", "away": "first-touch", "homeScore": 2, "awayScore": 0 },
+    { "matchday": 3, "date": "2026-03-24", "home": "99c-fresh", "away": "pickup", "homeScore": 4, "awayScore": 0 },
+    { "matchday": 3, "date": "2026-03-24", "home": "gipp", "away": "corinthians", "homeScore": 2, "awayScore": 1 },
+    { "matchday": 3, "date": "2026-03-24", "home": "lowen", "away": "gorges", "homeScore": 1, "awayScore": 2 },
+
+    { "matchday": 4, "date": "2026-03-31", "home": "ag-wave", "away": "lowen", "homeScore": 5, "awayScore": 1 },
+    { "matchday": 4, "date": "2026-03-31", "home": "corinthians", "away": "first-touch", "homeScore": 4, "awayScore": 1 },
+    { "matchday": 4, "date": "2026-03-31", "home": "wanderers", "away": "99c-fresh", "homeScore": 0, "awayScore": 6 },
+    { "matchday": 4, "date": "2026-03-31", "home": "pickup", "away": "gipp", "homeScore": 1, "awayScore": 6 },
+
+    { "matchday": 5, "date": "2026-04-07", "home": "99c-fresh", "away": "gorges", "homeScore": 4, "awayScore": 1 },
+    { "matchday": 5, "date": "2026-04-07", "home": "lowen", "away": "gipp", "homeScore": 1, "awayScore": 0 },
+    { "matchday": 5, "date": "2026-04-07", "home": "sharples", "away": "corinthians", "homeScore": 2, "awayScore": 3 },
+    { "matchday": 5, "date": "2026-04-07", "home": "ag-wave", "away": "first-touch", "homeScore": 4, "awayScore": 3 },
+
+    { "matchday": 6, "date": "2026-04-14", "home": "wanderers", "away": "gipp", "homeScore": 4, "awayScore": 3 },
+    { "matchday": 6, "date": "2026-04-14", "home": "corinthians", "away": "ag-wave", "homeScore": 4, "awayScore": 2 },
+    { "matchday": 6, "date": "2026-04-14", "home": "gorges", "away": "first-touch", "homeScore": 5, "awayScore": 0 },
+    { "matchday": 6, "date": "2026-04-14", "home": "sharples", "away": "99c-fresh", "homeScore": 1, "awayScore": 3 },
+
+    { "matchday": 7, "date": "2026-04-21", "home": "pickup", "away": "first-touch", "homeScore": 2, "awayScore": 0 },
+    { "matchday": 7, "date": "2026-04-21", "home": "sharples", "away": "lowen", "homeScore": 0, "awayScore": 1 },
+    { "matchday": 7, "date": "2026-04-21", "home": "wanderers", "away": "corinthians", "homeScore": 4, "awayScore": 1 },
+    { "matchday": 7, "date": "2026-04-21", "home": "gipp", "away": "ag-wave", "homeScore": 4, "awayScore": 2 },
+
+    { "matchday": 8, "date": "2026-04-28", "home": "99c-fresh", "away": "gipp", "homeScore": 0, "awayScore": 0 },
+    { "matchday": 8, "date": "2026-04-28", "home": "pickup", "away": "ag-wave", "homeScore": 0, "awayScore": 6 },
+    { "matchday": 8, "date": "2026-04-28", "home": "wanderers", "away": "gorges", "homeScore": 1, "awayScore": 5 },
+    { "matchday": 8, "date": "2026-04-28", "home": "corinthians", "away": "lowen", "homeScore": 5, "awayScore": 5 },
+
+    { "matchday": 9, "date": "2026-05-05", "home": "ag-wave", "away": "gorges", "homeScore": null, "awayScore": null },
+    { "matchday": 9, "date": "2026-05-05", "home": "gipp", "away": "sharples", "homeScore": null, "awayScore": null },
+    { "matchday": 9, "date": "2026-05-05", "home": "lowen", "away": "pickup", "homeScore": null, "awayScore": null },
+    { "matchday": 9, "date": "2026-05-05", "home": "first-touch", "away": "99c-fresh", "homeScore": null, "awayScore": null },
+
+    { "matchday": 10, "date": "2026-05-12", "home": "corinthians", "away": "99c-fresh", "homeScore": null, "awayScore": null },
+    { "matchday": 10, "date": "2026-05-12", "home": "wanderers", "away": "lowen", "homeScore": null, "awayScore": null },
+    { "matchday": 10, "date": "2026-05-12", "home": "gorges", "away": "gipp", "homeScore": null, "awayScore": null },
+    { "matchday": 10, "date": "2026-05-12", "home": "sharples", "away": "pickup", "homeScore": null, "awayScore": null }
+  ]
+}

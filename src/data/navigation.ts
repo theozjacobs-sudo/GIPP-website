@@ -23,6 +23,11 @@ export const PRIMARY_NAV: NavLink[] = [
     description: "Meet the squad behind the good intentions",
   },
   {
+    label: "Playoffs",
+    href: "/playoffs",
+    description: "Live playoff probabilities and what we need to do",
+  },
+  {
     label: "Philosophy",
     href: "/philosophy",
     description: "Why we play the way we play (and lose the way we lose)",
@@ -60,6 +65,7 @@ export const NAV_GROUPS: NavGroup[] = [
     links: [
       { label: "Home", href: "/" },
       { label: "Team", href: "/team" },
+      { label: "Playoffs", href: "/playoffs" },
       { label: "Philosophy", href: "/philosophy" },
       { label: "Blog", href: "/blog" },
     ],
