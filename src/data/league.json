@@ -67,6 +67,8 @@
     { "matchday": 10, "date": "2026-05-12", "home": "corinthians", "away": "99c-fresh", "homeScore": null, "awayScore": null },
     { "matchday": 10, "date": "2026-05-12", "home": "wanderers", "away": "lowen", "homeScore": null, "awayScore": null },
     { "matchday": 10, "date": "2026-05-12", "home": "gorges", "away": "gipp", "homeScore": null, "awayScore": null },
-    { "matchday": 10, "date": "2026-05-12", "home": "sharples", "away": "pickup", "homeScore": null, "awayScore": null }
+    { "matchday": 10, "date": "2026-05-12", "home": "sharples", "away": "pickup", "homeScore": null, "awayScore": null },
+
+    { "matchday": 11, "date": "2026-05-19", "home": "ag-wave", "away": "sharples", "homeScore": null, "awayScore": null }
   ]
 }
