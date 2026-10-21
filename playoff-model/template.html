@@ -1,0 +1,415 @@
+<title>GIPP Playoff Picture</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Caveat:wght@600;700&display=swap">
+<style>
+/* Layout: one long navy column, orange hero, every section driven by MODEL data and a single scenario toggle. */
+:root {
+  --navy: #0d1220; --navy-2: #141b2e; --navy-3: #1c2440;
+  --orange: #e8722a; --orange-chart: #e06a22; --orange-deep: #b8511a; --red: #c2402a;
+  --cream: #f5e9d0; --cream-60: rgba(245,233,208,0.62); --cream-35: rgba(245,233,208,0.35); --cream-15: rgba(245,233,208,0.13);
+  --bar-muted: #d9c9a8; --sand: #b38a2c; --blue: #4f98d6; --draw: #3a4360;
+  --font-ui: 'Inter', system-ui, -apple-system, sans-serif; --font-hand: 'Caveat', cursive;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--navy); color: var(--cream); font-family: var(--font-ui); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+a { color: var(--orange); }
+button { font: inherit; }
+
+/* hero */
+.hero { background: linear-gradient(150deg, #e8722a 0%, #cf5c1f 55%, #a51c1c 130%); color: #1a0e05; padding-block: 64px 56px; position: relative; overflow: hidden; }
+.hero::after { content: ""; position: absolute; inset: 0; opacity: .55; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E"); }
+.hero .wrap { position: relative; z-index: 1; }
+.eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: rgba(26,14,5,.75); margin: 0 0 18px; }
+.hero h1 { font-size: clamp(42px, 7.5vw, 84px); font-weight: 900; line-height: .95; letter-spacing: -.01em; text-transform: uppercase; margin: 0 0 20px; color: #fdf4e0; text-wrap: balance; text-shadow: 3px 3px 0 rgba(120,35,8,.55); }
+.hero .kicker { font-size: 18px; max-width: 600px; color: rgba(29,15,5,.92); font-weight: 600; margin: 0; }
+.hero .hand { font-family: var(--font-hand); font-size: 27px; font-weight: 600; color: #fdf4e0; margin: 24px 0 0; transform: rotate(-1.2deg); display: inline-block; }
+.matchcard { margin-top: 32px; display: inline-flex; flex-wrap: wrap; gap: 4px 28px; align-items: baseline; background: rgba(20,10,3,.82); color: var(--cream); padding: 14px 22px; border: 2px solid rgba(253,244,224,.35); }
+.matchcard .vs { font-size: 20px; font-weight: 800; text-transform: uppercase; letter-spacing: .02em; }
+.matchcard .when { font-size: 13px; color: var(--cream-60); letter-spacing: .08em; text-transform: uppercase; font-weight: 600; }
+
+/* headline tiles */
+.tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: -28px; position: relative; z-index: 2; }
+.tile { background: var(--navy-2); border: 1px solid var(--cream-15); padding: 18px 20px 14px; }
+.tile .n { font-size: 44px; font-weight: 900; line-height: 1; color: var(--orange); font-variant-numeric: tabular-nums; }
+.tile .l { font-size: 13px; color: var(--cream-60); margin-top: 6px; }
+
+/* toggle */
+.toggle { margin-top: 28px; background: var(--navy-2); border: 1px solid var(--cream-15); padding: 16px 20px; display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; }
+.toggle .q { font-size: 14px; font-weight: 700; flex: 1 1 320px; min-width: 0; }
+.toggle .q small { display: block; font-weight: 400; color: var(--cream-60); font-size: 13px; margin-top: 2px; }
+.seg { display: inline-flex; border: 1px solid var(--cream-35); }
+.seg button { background: transparent; color: var(--cream-60); border: 0; padding: 8px 14px; cursor: pointer; font-size: 13px; font-weight: 700; letter-spacing: .04em; }
+.seg button[aria-pressed="true"] { background: var(--orange); color: #1a0e05; }
+.seg button:focus-visible { outline: 2px solid var(--cream); outline-offset: -2px; }
+
+/* sections */
+section { padding: 56px 0 8px; }
+h2 { font-size: 13px; font-weight: 800; letter-spacing: .24em; text-transform: uppercase; color: var(--orange); margin: 0 0 6px; }
+.h2-sub { font-size: 26px; font-weight: 800; margin: 0 0 24px; letter-spacing: -.01em; text-wrap: balance; }
+p.note { color: var(--cream-60); font-size: 15px; max-width: 640px; }
+
+/* scenario cards */
+.scenarios { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.scn { background: var(--navy-2); border: 1px solid var(--cream-15); padding: 20px 20px 16px; border-top: 4px solid var(--bar-muted); position: relative; min-width: 0; }
+.scn.win, .scn.draw { border-top-color: var(--orange); }
+.scn.lose { border-top-color: var(--red); }
+.scn .res { font-size: 13px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: var(--cream-60); }
+.scn .big { font-size: 44px; font-weight: 900; line-height: 1.1; font-variant-numeric: tabular-nums; margin: 6px 0 2px; }
+.scn.win .big, .scn.draw .big { color: var(--orange); }
+.scn.lose .big { color: var(--red); }
+.scn .lbl { font-size: 13px; color: var(--cream-60); margin-bottom: 12px; }
+.scn .odds { position: absolute; top: 16px; right: 18px; font-size: 12px; color: var(--cream-35); font-weight: 600; font-variant-numeric: tabular-nums; }
+.seedbar { display: flex; height: 14px; gap: 2px; margin: 4px 0 8px; }
+.seedbar span { background: var(--bar-muted); min-width: 0; }
+.seedbar span.s1 { background: var(--orange); } .seedbar span.s2 { background: var(--sand); } .seedbar span.s3 { background: var(--blue); } .seedbar span.s4 { background: var(--bar-muted); } .seedbar span.out { background: var(--red); }
+.seedkey { font-size: 12.5px; color: var(--cream-60); line-height: 1.5; font-variant-numeric: tabular-nums; }
+.seedkey b { color: var(--cream); font-weight: 700; }
+.scn .why { font-size: 14px; border-top: 1px solid var(--cream-15); padding-top: 10px; margin-top: 8px; line-height: 1.5; }
+
+/* probability bars */
+.probchart { display: grid; grid-template-columns: 200px 1fr 64px; gap: 10px 14px; align-items: center; }
+.probchart .team { font-size: 15px; font-weight: 600; text-align: right; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.probchart .team.me { color: var(--orange); font-weight: 800; }
+.probchart .track { background: var(--cream-15); height: 24px; position: relative; }
+.probchart .fill { position: absolute; inset: 0 auto 0 0; background: var(--bar-muted); border-radius: 0 4px 4px 0; min-width: 2px; }
+.probchart .fill.me { background: var(--orange); }
+.probchart .val { font-size: 15px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.elim { margin-top: 18px; font-size: 13px; color: var(--cream-35); }
+
+/* table */
+.tablebox { overflow-x: auto; border: 1px solid var(--cream-15); }
+table { border-collapse: collapse; width: 100%; min-width: 700px; font-size: 14.5px; }
+th, td { padding: 9px 12px; text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+th:nth-child(2), td:nth-child(2) { text-align: left; }
+th { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--cream-60); border-bottom: 2px solid var(--cream-15); font-weight: 700; }
+td { border-bottom: 1px solid rgba(245,233,208,.07); }
+tr.me td { background: rgba(232,114,42,.14); font-weight: 700; }
+tr.me td:nth-child(2) { color: var(--orange); }
+tr.cutoff td { border-bottom: none; border-top: 2px dashed var(--orange); padding: 6px 12px; font-family: var(--font-hand); font-size: 20px; color: var(--orange); text-align: center; white-space: normal; }
+tr.out td { color: var(--cream-35); }
+td .gp { color: var(--cream-35); font-weight: 400; }
+
+/* position distribution */
+.posdist { display: flex; align-items: flex-end; gap: 12px; height: 230px; max-width: 640px; padding-top: 26px; }
+.pos { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; height: 100%; position: relative; min-width: 0; }
+.pos .bar { background: var(--orange); border-radius: 4px 4px 0 0; min-height: 2px; }
+.pos.out .bar { background: var(--red); }
+.pos .pv { font-size: 14px; font-weight: 700; text-align: center; margin-bottom: 6px; font-variant-numeric: tabular-nums; }
+.pos .pl { font-size: 12px; color: var(--cream-60); text-align: center; margin-top: 8px; text-transform: uppercase; letter-spacing: .06em; font-weight: 600; }
+.pos .pl small { display: block; text-transform: none; letter-spacing: 0; font-weight: 400; color: var(--cream-35); }
+.cutline { border: 0; border-left: 2px dashed var(--orange); align-self: stretch; position: relative; }
+.cutline span { position: absolute; top: -24px; left: -30px; white-space: nowrap; font-family: var(--font-hand); font-size: 20px; color: var(--orange); }
+.legend { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 18px; font-size: 13px; color: var(--cream-60); }
+.legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 7px; vertical-align: -1px; }
+
+/* two col */
+.twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.twocol > div { min-width: 0; }
+.path { list-style: none; padding: 0; margin: 0; }
+.path li { display: grid; grid-template-columns: 96px 1fr 56px; gap: 12px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--cream-15); font-size: 14px; }
+.path li .pts { font-weight: 700; font-variant-numeric: tabular-nums; }
+.path li .pts small { display: block; font-weight: 400; color: var(--cream-35); font-size: 12px; }
+.path li .track { background: var(--cream-15); height: 16px; position: relative; }
+.path li .fill { position: absolute; inset: 0 auto 0 0; background: var(--orange); border-radius: 0 3px 3px 0; min-width: 2px; }
+.path li.bad .fill { background: var(--red); }
+.path li .v { font-weight: 700; font-variant-numeric: tabular-nums; text-align: right; }
+.magic { margin-top: 16px; font-family: var(--font-hand); font-size: 24px; color: var(--orange); transform: rotate(-.8deg); display: inline-block; }
+
+/* fixtures */
+.day { margin-bottom: 26px; }
+.day h3 { font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--cream-60); margin: 0 0 6px; font-weight: 700; }
+.day h3 em { font-style: normal; color: var(--cream-35); font-weight: 400; letter-spacing: .04em; text-transform: none; margin-left: 8px; }
+.fixture { display: grid; grid-template-columns: 1fr 240px; gap: 6px 18px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--cream-15); font-size: 15px; }
+.fixture.key { background: rgba(232,114,42,.12); margin: 0 -12px; padding: 10px 12px; border-left: 3px solid var(--orange); font-weight: 700; }
+.fixture .who { min-width: 0; }
+.fixture .who .t { color: var(--cream-60); font-size: 12.5px; font-weight: 400; font-variant-numeric: tabular-nums; margin-left: 8px; white-space: nowrap; }
+.fixture .who .me { color: var(--orange); }
+.wdl { display: flex; height: 18px; gap: 2px; font-size: 11px; font-weight: 700; color: #0d1220; }
+.wdl span { display: flex; align-items: center; justify-content: center; min-width: 0; overflow: hidden; white-space: nowrap; }
+.wdl .h { background: var(--sand); } .wdl .d { background: var(--draw); color: var(--cream-60); } .wdl .a { background: var(--blue); }
+.wdl .g { background: var(--orange-chart); }
+.wdlkey { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 12.5px; color: var(--cream-60); margin: 0 0 18px; }
+.wdlkey i { display: inline-block; width: 12px; height: 12px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+
+/* method */
+.method { margin: 56px 0 0; padding: 26px 0 48px; border-top: 1px solid var(--cream-15); font-size: 13.5px; color: var(--cream-60); line-height: 1.7; }
+.method strong { color: var(--cream); }
+.method p { margin: 0 0 12px; max-width: 760px; }
+
+/* tooltip */
+#tip { position: fixed; z-index: 50; background: #05070d; color: var(--cream); border: 1px solid var(--orange); padding: 7px 11px; font-size: 13px; pointer-events: none; opacity: 0; transition: opacity .12s; max-width: 280px; font-variant-numeric: tabular-nums; }
+#tip.on { opacity: 1; }
+
+@media (max-width: 760px) {
+  .tiles { grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+  .tile { padding: 14px 12px 12px; } .tile .n { font-size: 30px; } .tile .l { font-size: 12px; }
+  .scenarios, .twocol { grid-template-columns: 1fr; }
+  .probchart { grid-template-columns: 112px 1fr 50px; } .probchart .team { font-size: 13px; }
+  .fixture { grid-template-columns: 1fr; }
+  .posdist { gap: 6px; height: 200px; }
+  .cutline span { left: -14px; font-size: 17px; }
+}
+@media (prefers-reduced-motion: no-preference) { .probchart .fill, .pos .bar, .path .fill { transition: width .7s ease, height .7s ease; } }
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Good Intent Poor Product F.C. · 9-a-side · Pier 5 · Fall 2026 · Playoff Race</p>
+    <h1>We're in.<br>Now about that seed.</h1>
+    <p class="kicker">Monte Carlo playoff model, updated after the Oct 20 round. Top four of ten make the Nov 17 semi-finals: 1st v 4th, 2nd v 3rd. Three games left for us.</p>
+    <p class="hand">"good intent, poor product, excellent odds"</p>
+    <div class="matchcard" role="group" aria-label="Next match">
+      <span class="vs">99c Fresh FC vs GIPP</span>
+      <span class="when">Tue Oct 27 · 8:45 pm · Pier 5, Brooklyn</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="tiles" id="tiles" aria-live="polite">
+    <div class="tile"><div class="n" id="t-qual">–</div><div class="l">chance we make the semis</div></div>
+    <div class="tile"><div class="n" id="t-s2">–</div><div class="l">chance we're the 2 seed (play the 3rd-place team)</div></div>
+    <div class="tile"><div class="n" id="t-s1">–</div><div class="l">chance we take the top seed off 99c Fresh</div></div>
+  </div>
+
+  <div class="toggle">
+    <div class="q">Do the three leftover games on Nov 17 count toward seeding?
+      <small>The league site lists Nov 17 as "Playoffs (1v4, 2v3) &amp; remaining season games". Three round-robin games are still unscheduled: 99c v Corinthians, Pickup v First Touch, Wanderers v Ummah. If they're played before the semis they count. If the bracket is set after Nov 10, they don't.</small></div>
+    <div class="seg" role="group" aria-label="Scenario">
+      <button type="button" id="btn-all15" aria-pressed="true">They count (15 games)</button>
+      <button type="button" id="btn-twelve" aria-pressed="false">They don't (12 games)</button>
+    </div>
+  </div>
+
+  <section aria-labelledby="s-scn">
+    <h2 id="s-scn">The Three Futures</h2>
+    <p class="h2-sub">What Tuesday's result against 99c Fresh does to us</p>
+    <div class="scenarios" id="scenarios"></div>
+    <p class="note" style="margin-top:16px">Qualification barely moves because our last two games are against the bottom two. The seed is what's at stake on Tuesday: beating 99c is the only realistic route to the top seed, and the top seed gets the 4th-place team in the semi instead of the 3rd.</p>
+  </section>
+
+  <section aria-labelledby="s-prob">
+    <h2 id="s-prob">The Field</h2>
+    <p class="h2-sub">Playoff probability, all ten teams</p>
+    <div class="probchart" id="probchart" role="img" aria-label="Bar chart of each team's probability of finishing in the top four"></div>
+    <p class="elim" id="elim"></p>
+  </section>
+
+  <section aria-labelledby="s-table">
+    <h2 id="s-table">The Table</h2>
+    <p class="h2-sub">Standings after the Oct 20 round · 6 of 9 played</p>
+    <div class="tablebox">
+      <table>
+        <thead><tr><th>#</th><th>Team</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GF</th><th>GA</th><th>GD</th><th>Pts</th><th>Left</th><th>Max</th><th>E[Pts]</th></tr></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+    <p class="note" style="margin-top:12px">GF/GA/GD are rebuilt from the match results. The league site's goal columns for GIPP and Sharples don't add up from their results (it lists us at 18–4, +8; the results say 18–7, +11). Points and records match everywhere.</p>
+  </section>
+
+  <section aria-labelledby="s-pos">
+    <h2 id="s-pos">Where We Land</h2>
+    <p class="h2-sub">GIPP's simulated final position</p>
+    <div class="posdist" id="posdist" role="img" aria-label="Bar chart of GIPP's finishing position probabilities"></div>
+    <div class="legend">
+      <span><i style="background:var(--orange)"></i>In the playoffs</span>
+      <span><i style="background:var(--red)"></i>Season over</span>
+    </div>
+  </section>
+
+  <section class="twocol">
+    <div aria-labelledby="s-path">
+      <h2 id="s-path">The Path</h2>
+      <p class="h2-sub">Points from our last three games</p>
+      <ul class="path" id="path"></ul>
+      <p class="magic" id="magic"></p>
+      <p class="note" style="margin-top:12px">Remaining: 99c Fresh (Oct 27), Wanderers (Nov 3), First Touch (Nov 10). Draw one and win one of the last two and the maths is done regardless of Tuesday.</p>
+    </div>
+    <div aria-labelledby="s-semi">
+      <h2 id="s-semi">The Semi</h2>
+      <p class="h2-sub">Who we'd play on Nov 17, if we're in</p>
+      <div class="probchart" id="semichart" role="img" aria-label="Bar chart of GIPP's most likely semi-final opponents"></div>
+      <p class="note" style="margin-top:16px" id="semi-note"></p>
+    </div>
+  </section>
+
+  <section aria-labelledby="s-fix">
+    <h2 id="s-fix">What's Left</h2>
+    <p class="h2-sub">All 15 remaining fixtures, with the model's odds</p>
+    <div class="wdlkey"><span><i style="background:var(--sand)"></i>First-named team wins</span><span><i style="background:var(--draw)"></i>Draw</span><span><i style="background:var(--blue)"></i>Second-named team wins</span><span><i style="background:var(--orange-chart)"></i>GIPP wins</span></div>
+    <div id="fixtures"></div>
+  </section>
+
+  <div class="method">
+    <p><strong>How the model works.</strong> <span id="m-n"></span> Monte Carlo simulations of the remaining fixtures. Each team gets an attack and defence rating from its season goals for and against relative to the league average (<span id="m-avg"></span> goals per team per game), shrunk toward average with three games' worth of prior so a 7–1 doesn't make us look like Brazil. Scorelines are drawn from independent Poisson distributions. Everything is played at Pier 5, so there's no home advantage. The final table is scored points → goal difference → goals scored, then a coin flip; the league hasn't published its tiebreakers, and head-to-head would change very little here.</p>
+    <p><strong>The 15-game vs 12-game toggle</strong> only changes who 99c, Corinthians, Pickup, Wanderers, First Touch and Ummah play on Nov 17. Our own three games are the same under both. The forfeit (First Touch 0–3 Sharples, Sep 22) is counted as played.</p>
+    <p>Standings and fixtures from the league site after the Oct 20 round. Data compiled Oct 21, 2026.</p>
+  </div>
+
+</main>
+
+<div id="tip" role="status"></div>
+
+<script>
+var MODEL = __MODEL_JSON__;
+(function () {
+  var ME = "Good Intent Poor Product FC";
+  var SHORT = {"Good Intent Poor Product FC":"GIPP","99c Fresh FC":"99c Fresh","Relaunch FA":"Relaunch","Sharples Wednesday":"Sharples","AG Wave & Co":"AG Wave","Pickup FC":"Pickup","First Touch FC":"First Touch","Ummah FC":"Ummah","Corinthians":"Corinthians","Wanderers":"Wanderers"};
+  var ORD = ["1st","2nd","3rd","4th","5th","6th","7th","8th","9th","10th"];
+  var scenario = "all15";
+  function pct(x, d) { return (100 * x).toFixed(d == null ? 0 : d) + "%"; }
+  function pctCap(x) { var v = 100 * x; if (v > 99.95) return "≈100%"; if (v < 0.05 && v > 0) return "<0.1%"; return v.toFixed(v < 10 && v > 0 ? 1 : 0) + "%"; }
+  function esc(s) { return s.replace(/&/g, "&amp;").replace(/</g, "&lt;"); }
+  function raf(fn) { requestAnimationFrame(function () { requestAnimationFrame(fn); }); }
+
+  var tip = document.getElementById("tip");
+  function showTip(html, x, y) { tip.innerHTML = html; tip.classList.add("on"); var w = tip.offsetWidth; tip.style.left = Math.min(x + 14, window.innerWidth - w - 12) + "px"; tip.style.top = (y + 16) + "px"; }
+  function hideTip() { tip.classList.remove("on"); }
+  function hover(el, html) { el.addEventListener("mousemove", function (e) { showTip(html, e.clientX, e.clientY); }); el.addEventListener("mouseleave", hideTip); }
+
+  function seedBar(seeds) {
+    var html = '<div class="seedbar">';
+    var parts = [["s1", seeds[0]], ["s2", seeds[1]], ["s3", seeds[2]], ["s4", seeds[3]], ["out", 1 - seeds[0] - seeds[1] - seeds[2] - seeds[3]]];
+    parts.forEach(function (p) { if (p[1] > 0.001) html += '<span class="' + p[0] + '" style="flex:' + p[1].toFixed(4) + '"></span>'; });
+    html += '</div><div class="seedkey">1st <b>' + pct(seeds[0]) + '</b> · 2nd <b>' + pct(seeds[1]) + '</b> · 3rd <b>' + pct(seeds[2]) + '</b> · 4th <b>' + pct(seeds[3]) + '</b> · out <b>' + pct(parts[4][1]) + '</b></div>';
+    return html;
+  }
+
+  function render() {
+    var S = MODEL[scenario];
+    var mine = S.seeds[ME];
+    document.getElementById("t-qual").textContent = pctCap(S.qual[ME]);
+    document.getElementById("t-s2").textContent = pct(mine[1]);
+    document.getElementById("t-s1").textContent = pct(mine[0]);
+
+    // scenarios
+    var why = {
+      win: "15 points, one behind 99c with the head-to-head in hand. The top seed then comes down to who drops points over the last two rounds, and whether Corinthians can take anything off 99c if that Nov 17 game counts.",
+      draw: "13 points, still clear second. 99c go to 17 with a four-point cushion and the top seed is as good as theirs, so we'd be playing for second, which means the 3rd-place team in the semi.",
+      lose: "Stuck on 12, but with Wanderers and First Touch to come. Relaunch, Sharples and Corinthians would all need big finishes to catch us, and only two of them can."
+    };
+    var sc = document.getElementById("scenarios"); sc.innerHTML = "";
+    ["win", "draw", "lose"].forEach(function (k) {
+      var c = S.cond[k];
+      var d = document.createElement("div"); d.className = "scn " + k;
+      d.innerHTML = '<span class="odds">' + pct(c.p_result) + ' likely</span><div class="res">' + k + '</div><div class="big">' + pctCap(c.p_qual) + '</div><div class="lbl">chance we qualify</div>' + seedBar(c.seeds) + '<div class="why">' + why[k] + '</div>';
+      sc.appendChild(d);
+    });
+
+    // field
+    var pc = document.getElementById("probchart"); pc.innerHTML = "";
+    var order = MODEL.order.slice().sort(function (a, b) { return S.qual[b] - S.qual[a]; });
+    var elim = [];
+    order.forEach(function (t) {
+      var p = S.qual[t];
+      if (p < 0.0005) { elim.push(SHORT[t]); return; }
+      var me = t === ME;
+      var name = document.createElement("div"); name.className = "team" + (me ? " me" : ""); name.textContent = me ? "GIPP" : t;
+      var track = document.createElement("div"); track.className = "track";
+      var fill = document.createElement("div"); fill.className = "fill" + (me ? " me" : ""); fill.style.width = "0%"; track.appendChild(fill);
+      var val = document.createElement("div"); val.className = "val"; val.textContent = pctCap(p);
+      pc.appendChild(name); pc.appendChild(track); pc.appendChild(val);
+      hover(track, "<strong>" + esc(t) + "</strong><br>" + pct(p, 1) + " top four · " + pct(S.seed1[t], 1) + " top seed · expected " + S.exp_pts[t].toFixed(1) + " pts");
+      raf(function () { fill.style.width = (100 * p) + "%"; });
+    });
+    document.getElementById("elim").textContent = elim.length ? elim.join(", ") + (elim.length > 1 ? " are" : " is") + " out (0% in the simulations)." : "";
+
+    // table
+    var tb = document.getElementById("tbody"); tb.innerHTML = "";
+    var left = {}; MODEL.fixtures.forEach(function (f) { if (scenario === "twelve" && f.date === "Nov 17") return; left[f.home] = (left[f.home] || 0) + 1; left[f.away] = (left[f.away] || 0) + 1; });
+    MODEL.order.forEach(function (t, i) {
+      var r = MODEL.table[t], me = t === ME, out = S.qual[t] < 0.0005;
+      var tr = document.createElement("tr"); tr.className = me ? "me" : out ? "out" : "";
+      var l = left[t] || 0;
+      tr.innerHTML = "<td>" + (i + 1) + "</td><td>" + esc(t) + "</td><td>" + r.p + "</td><td>" + r.w + "</td><td>" + r.d + "</td><td>" + r.l + "</td><td>" + r.gf + "</td><td>" + r.ga + "</td><td>" + (r.gd > 0 ? "+" : "") + r.gd + "</td><td>" + r.pts + "</td><td class='gp'>" + l + "</td><td class='gp'>" + (r.pts + 3 * l) + "</td><td class='gp'>" + S.exp_pts[t].toFixed(1) + "</td>";
+      tb.appendChild(tr);
+      if (i === 3) { var cut = document.createElement("tr"); cut.className = "cutoff"; cut.innerHTML = "<td colspan='13'>— playoff line: top 4 go to the semis —</td>"; tb.appendChild(cut); }
+    });
+
+    // position distribution
+    var pd = document.getElementById("posdist"); pd.innerHTML = "";
+    var max = Math.max.apply(null, mine);
+    var lastShown = 5; for (var s = 9; s >= 4; s--) { if (mine[s] >= 0.0005) { lastShown = Math.max(s, 4); break; } }
+    for (var s2 = 0; s2 <= lastShown; s2++) {
+      if (s2 === 4) { var c = document.createElement("div"); c.className = "cutline"; c.innerHTML = "<span>playoff line</span>"; pd.appendChild(c); }
+      var p = mine[s2], out = s2 >= 4;
+      var col = document.createElement("div"); col.className = "pos" + (out ? " out" : "");
+      var sub = s2 === 0 ? "plays 4th" : s2 === 1 ? "plays 3rd" : s2 === 2 ? "plays 2nd" : s2 === 3 ? "plays 1st" : "home";
+      col.innerHTML = '<div class="pv">' + pctCap(p) + '</div><div class="bar" style="height:2px"></div><div class="pl">' + ORD[s2] + '<small>' + sub + '</small></div>';
+      pd.appendChild(col);
+      hover(col, "<strong>Finish " + ORD[s2] + "</strong><br>" + pct(p, 1) + " of simulations" + (out ? " — miss the playoffs" : " — in the playoffs"));
+      (function (bar, h) { raf(function () { bar.style.height = h + "px"; }); })(col.querySelector(".bar"), Math.max(2, p / max * 150));
+    }
+
+    // path by points
+    var pl = document.getElementById("path"); pl.innerHTML = "";
+    var base = MODEL.table[ME].pts, magic = null;
+    Object.keys(S.bypts).map(Number).sort(function (a, b) { return b - a; }).forEach(function (fp) {
+      var v = S.bypts[fp], add = fp - base;
+      if (v.qual > 0.9995 && magic === null) magic = add;
+      var li = document.createElement("li"); li.className = v.qual < 0.5 ? "bad" : "";
+      li.innerHTML = '<div class="pts">' + fp + ' pts<small>+' + add + ' from 3 games</small></div><div class="track"><div class="fill" style="width:0%"></div></div><div class="v">' + pctCap(v.qual) + '</div>';
+      pl.appendChild(li);
+      hover(li, "<strong>Finish on " + fp + " points</strong><br>" + pct(v.p, 1) + " of simulations end here · " + pct(v.qual, 1) + " of those make the top four");
+      (function (f, w) { raf(function () { f.style.width = w + "%"; }); })(li.querySelector(".fill"), 100 * v.qual);
+    });
+    document.getElementById("magic").textContent = magic !== null ? "magic number: " + magic + " point" + (magic === 1 ? "" : "s") + " locks it" : "";
+
+    // semi opponent
+    var smc = document.getElementById("semichart"); smc.innerHTML = "";
+    var opps = Object.keys(S.semi_opp).filter(function (k) { return S.semi_opp[k] >= 0.005; });
+    var omax = S.semi_opp[opps[0]];
+    opps.forEach(function (t) {
+      var p = S.semi_opp[t];
+      var name = document.createElement("div"); name.className = "team"; name.textContent = t;
+      var track = document.createElement("div"); track.className = "track";
+      var fill = document.createElement("div"); fill.className = "fill"; fill.style.width = "0%"; track.appendChild(fill);
+      var val = document.createElement("div"); val.className = "val"; val.textContent = pct(p);
+      smc.appendChild(name); smc.appendChild(track); smc.appendChild(val);
+      hover(track, "<strong>" + esc(t) + "</strong><br>" + pct(p, 1) + " of the simulations where we qualify");
+      raf(function () { fill.style.width = (100 * p / omax * 100 / 100) + "%"; });
+    });
+    document.getElementById("semi-note").textContent = "Bars are scaled to the most likely opponent. We only meet 99c in the semi if one of us drops to 4th, which is why that number is small.";
+
+    // fixtures
+    var fx = document.getElementById("fixtures"); fx.innerHTML = "";
+    var byDay = {}; var days = [];
+    MODEL.fixtures.forEach(function (f) { if (!byDay[f.date]) { byDay[f.date] = []; days.push(f.date); } byDay[f.date].push(f); });
+    days.forEach(function (d) {
+      var box = document.createElement("div"); box.className = "day";
+      var h = document.createElement("h3"); h.innerHTML = esc(d) + (d === "Nov 17" ? "<em>" + (scenario === "twelve" ? "unscheduled · not counted in this scenario" : "unscheduled on the league site · inferred from the round robin") + "</em>" : "<em>Pier 5</em>");
+      box.appendChild(h);
+      byDay[d].forEach(function (f) {
+        var isMe = f.home === ME || f.away === ME;
+        var row = document.createElement("div"); row.className = "fixture" + (isMe ? " key" : "");
+        var hn = f.home === ME ? '<span class="me">GIPP</span>' : esc(f.home), an = f.away === ME ? '<span class="me">GIPP</span>' : esc(f.away);
+        var ch = f.home === ME ? "g" : "h", ca = f.away === ME ? "g" : "a";
+        var dim = scenario === "twelve" && d === "Nov 17" ? " style='opacity:.5'" : "";
+        row.innerHTML = '<div class="who">' + hn + ' v ' + an + '<span class="t">' + esc(f.time) + '</span></div>' +
+          '<div class="wdl"' + dim + ' role="img" aria-label="' + esc(SHORT[f.home]) + ' win ' + pct(f.ph) + ', draw ' + pct(f.pd) + ', ' + esc(SHORT[f.away]) + ' win ' + pct(f.pa) + '">' +
+          '<span class="' + ch + '" style="flex:' + f.ph.toFixed(3) + '">' + (f.ph >= 0.14 ? pct(f.ph) : "") + '</span>' +
+          '<span class="d" style="flex:' + f.pd.toFixed(3) + '">' + (f.pd >= 0.14 ? pct(f.pd) : "") + '</span>' +
+          '<span class="' + ca + '" style="flex:' + f.pa.toFixed(3) + '">' + (f.pa >= 0.14 ? pct(f.pa) : "") + '</span></div>';
+        box.appendChild(row);
+        hover(row.querySelector(".wdl"), "<strong>" + esc(SHORT[f.home]) + " v " + esc(SHORT[f.away]) + "</strong><br>" + esc(SHORT[f.home]) + " win " + pct(f.ph, 1) + " · draw " + pct(f.pd, 1) + " · " + esc(SHORT[f.away]) + " win " + pct(f.pa, 1) + "<br>expected goals " + f.xh.toFixed(1) + " – " + f.xa.toFixed(1));
+      });
+      fx.appendChild(box);
+    });
+  }
+
+  document.getElementById("m-n").textContent = MODEL.N.toLocaleString();
+  document.getElementById("m-avg").textContent = MODEL.avg.toFixed(2);
+  var b15 = document.getElementById("btn-all15"), b12 = document.getElementById("btn-twelve");
+  function setScenario(s) { scenario = s; b15.setAttribute("aria-pressed", s === "all15"); b12.setAttribute("aria-pressed", s === "twelve"); try { localStorage.setItem("gipp-scn", s); } catch (e) {} render(); }
+  b15.addEventListener("click", function () { setScenario("all15"); });
+  b12.addEventListener("click", function () { setScenario("twelve"); });
+  try { var saved = localStorage.getItem("gipp-scn"); if (saved === "twelve") scenario = "twelve"; } catch (e) {}
+  b15.setAttribute("aria-pressed", scenario === "all15"); b12.setAttribute("aria-pressed", scenario === "twelve");
+  render();
+})();
+</script>
