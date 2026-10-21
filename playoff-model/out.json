@@ -843,5 +843,7 @@
   }
  },
  "N": 200000,
- "prior": 3.0
+ "prior": 3.0,
+ "clinch": 18,
+ "clinch_note": "exact search over every W/D/L combination of the 15 remaining games, assuming we lose every tiebreak"
 }

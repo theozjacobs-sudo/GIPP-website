@@ -190,7 +190,7 @@ td .gp { color: var(--cream-35); font-weight: 400; }
     <h2 id="s-scn">The Three Futures</h2>
     <p class="h2-sub">What Tuesday's result against 99c Fresh does to us</p>
     <div class="scenarios" id="scenarios"></div>
-    <p class="note" style="margin-top:16px">Qualification barely moves because our last two games are against the bottom two. The seed is what's at stake on Tuesday: beating 99c is the only realistic route to the top seed, and the top seed gets the 4th-place team in the semi instead of the 3rd.</p>
+    <p class="note" style="margin-top:16px">Qualification barely moves because our last two games are against the bottom two, and the model rates us about 80% to win each. Drop points in both and it gets real: see The Path below. The seed is what's at stake on Tuesday: beating 99c is the only realistic route to the top seed, and the top seed gets the 4th-place team in the semi instead of the 3rd.</p>
   </section>
 
   <section aria-labelledby="s-prob">
@@ -228,7 +228,7 @@ td .gp { color: var(--cream-35); font-weight: 400; }
       <p class="h2-sub">Points from our last three games</p>
       <ul class="path" id="path"></ul>
       <p class="magic" id="magic"></p>
-      <p class="note" style="margin-top:12px">Remaining: 99c Fresh (Oct 27), Wanderers (Nov 3), First Touch (Nov 10). Draw one and win one of the last two and the maths is done regardless of Tuesday.</p>
+      <p class="note" style="margin-top:12px">Remaining: 99c Fresh (Oct 27), Wanderers (Nov 3), First Touch (Nov 10). Beat Wanderers and First Touch and we're in no matter what, by exact search of every remaining result. On 16 or 17 we can only miss by losing a multi-way tiebreak, which our +11 goal difference makes very unlikely. On 15 or fewer it becomes about other results: we'd need two of Relaunch, Sharples, Corinthians, AG Wave and Pickup to stumble.</p>
     </div>
     <div aria-labelledby="s-semi">
       <h2 id="s-semi">The Semi</h2>
@@ -348,17 +348,16 @@ var MODEL = __MODEL_JSON__;
 
     // path by points
     var pl = document.getElementById("path"); pl.innerHTML = "";
-    var base = MODEL.table[ME].pts, magic = null;
+    var base = MODEL.table[ME].pts, magic = MODEL.clinch - base;
     Object.keys(S.bypts).map(Number).sort(function (a, b) { return b - a; }).forEach(function (fp) {
       var v = S.bypts[fp], add = fp - base;
-      if (v.qual > 0.9995 && magic === null) magic = add;
       var li = document.createElement("li"); li.className = v.qual < 0.5 ? "bad" : "";
       li.innerHTML = '<div class="pts">' + fp + ' pts<small>+' + add + ' from 3 games</small></div><div class="track"><div class="fill" style="width:0%"></div></div><div class="v">' + pctCap(v.qual) + '</div>';
       pl.appendChild(li);
       hover(li, "<strong>Finish on " + fp + " points</strong><br>" + pct(v.p, 1) + " of simulations end here · " + pct(v.qual, 1) + " of those make the top four");
       (function (f, w) { raf(function () { f.style.width = w + "%"; }); })(li.querySelector(".fill"), 100 * v.qual);
     });
-    document.getElementById("magic").textContent = magic !== null ? "magic number: " + magic + " point" + (magic === 1 ? "" : "s") + " locks it" : "";
+    document.getElementById("magic").textContent = "magic number: " + magic + " points (two wins) locks it, whatever else happens";
 
     // semi opponent
     var smc = document.getElementById("semichart"); smc.innerHTML = "";
