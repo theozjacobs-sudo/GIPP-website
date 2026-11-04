@@ -246,7 +246,7 @@ td .mark { color: var(--cream-35); font-weight: 400; }
       <h2 id="s-semi">The Semi</h2>
       <p class="h2-sub">Who we'd play on Nov 17, if we're in</p>
       <div class="probchart" id="semichart" role="img" aria-label="Bar chart of GIPP's most likely semi-final opponents"></div>
-      <p class="note" style="margin-top:16px">Bars are scaled to the most likely opponent. As the likely 2 seed we get whoever finishes 3rd, which is why Sharples dominate this chart.</p>
+      <p class="note" style="margin-top:16px" id="semi-note"></p>
     </div>
   </section>
 
@@ -392,6 +392,7 @@ var MODEL = __MODEL_JSON__;
       hover(track, "<strong>" + esc(t) + "</strong><br>" + pct(p, 1) + " of the simulations where we qualify");
       raf(function () { fill.style.width = (100 * p / omax) + "%"; });
     });
+    document.getElementById("semi-note").textContent = "Bars are scaled to the most likely opponent. We're almost certainly the 2 or 3 seed, so we meet whoever lands next to us: " + SHORT[opps[0]] + " in " + pct(S.semi_opp[opps[0]]) + " of the simulations where we go through.";
 
     // fixtures
     var fx = document.getElementById("fixtures"); fx.innerHTML = "";

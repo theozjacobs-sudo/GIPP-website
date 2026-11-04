@@ -20,12 +20,12 @@ KNOWN = [
  ("Oct 20","AG Wave & Co","99c Fresh FC",0,2), ("Oct 20","Pickup FC","Wanderers",3,0), ("Oct 20","First Touch FC","Ummah FC",3,3), ("Oct 20","Relaunch FA",GIPP,1,0),
  ("Oct 27","99c Fresh FC",GIPP,1,1),      # draw; exact score not reported, 1-1 assumed (GD unaffected)
  ("Nov 3","Wanderers",GIPP,1,2),          # GIPP won 2-1
+ ("Nov 3","Sharples Wednesday","Relaunch FA",0,5),  # reported: Sharples lost 5-0
 ]
 # Played, winner known, score not reported: (date, home, away, "home"|"away")
 WINNER_ONLY = [
  ("Nov 3","99c Fresh FC","Ummah FC","home"),
  ("Nov 3","AG Wave & Co","Corinthians","home"),
- ("Nov 3","Sharples Wednesday","Relaunch FA","home"),   # reported as "assume Sharples won"
 ]
 # Played, result not reported at all: simulated like a future game
 PENDING = [
