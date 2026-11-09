@@ -6,7 +6,7 @@ TEAMS = ["99c Fresh FC","Good Intent Poor Product FC","Relaunch FA","Sharples We
          "AG Wave & Co","Pickup FC","Wanderers","First Touch FC","Ummah FC"]
 GIPP = "Good Intent Poor Product FC"
 idx = {k:i for i,k in enumerate(TEAMS)}
-ASOF = "after the Nov 3 round"
+ASOF = "going into the Nov 10 round"
 
 # ---------------- DATA ----------------
 # Played, scoreline known: (date, home, away, hg, ag)
@@ -18,31 +18,26 @@ KNOWN = [
  ("Oct 6",GIPP,"Pickup FC",1,0), ("Oct 6","Relaunch FA","99c Fresh FC",2,4), ("Oct 6","Corinthians","Sharples Wednesday",4,2), ("Oct 6","AG Wave & Co","Ummah FC",3,0),
  ("Oct 13","Ummah FC","Corinthians",1,2), ("Oct 13","First Touch FC","Relaunch FA",0,0), ("Oct 13","Wanderers","AG Wave & Co",1,5), ("Oct 13","Sharples Wednesday","99c Fresh FC",1,1),
  ("Oct 20","AG Wave & Co","99c Fresh FC",0,2), ("Oct 20","Pickup FC","Wanderers",3,0), ("Oct 20","First Touch FC","Ummah FC",3,3), ("Oct 20","Relaunch FA",GIPP,1,0),
- ("Oct 27","99c Fresh FC",GIPP,1,1),      # draw; exact score not reported, 1-1 assumed (GD unaffected)
- ("Nov 3","Wanderers",GIPP,1,2),          # GIPP won 2-1
- ("Nov 3","Sharples Wednesday","Relaunch FA",0,5),  # reported: Sharples lost 5-0
+ ("Oct 27","Pickup FC","Sharples Wednesday",2,5), ("Oct 27","AG Wave & Co","Relaunch FA",4,0), ("Oct 27","99c Fresh FC",GIPP,2,2), ("Oct 27","Corinthians","First Touch FC",1,0),
+ ("Nov 3","99c Fresh FC","Ummah FC",5,0), ("Nov 3","AG Wave & Co","Corinthians",3,1), ("Nov 3","Wanderers",GIPP,1,2), ("Nov 3","Sharples Wednesday","Relaunch FA",0,5),
 ]
 # Played, winner known, score not reported: (date, home, away, "home"|"away")
-WINNER_ONLY = [
- ("Nov 3","99c Fresh FC","Ummah FC","home"),
- ("Nov 3","AG Wave & Co","Corinthians","home"),
-]
+WINNER_ONLY = []
 # Played, result not reported at all: simulated like a future game
-PENDING = [
- ("Oct 27","7:00 pm","Pickup FC","Sharples Wednesday"),
- ("Oct 27","7:55 pm","AG Wave & Co","Relaunch FA"),
- ("Oct 27","9:40 pm","Corinthians","First Touch FC"),
-]
+PENDING = []
 # Still to play
 FUTURE = [
  ("Nov 10","7:00 pm","First Touch FC",GIPP),
- ("Nov 10","7:55 pm","Sharples Wednesday","Ummah FC"),
- ("Nov 10","8:45 pm","Wanderers","Relaunch FA"),
- ("Nov 10","9:40 pm","Pickup FC","AG Wave & Co"),
- ("Nov 17","TBC","99c Fresh FC","Corinthians"),
+ ("Nov 10","7:50 pm","Sharples Wednesday","Ummah FC"),
+ ("Nov 10","8:35 pm","Wanderers","Relaunch FA"),
+ ("Nov 10","9:20 pm","Corinthians","99c Fresh FC"),
+ ("Nov 10","10:10 pm","Pickup FC","AG Wave & Co"),
  ("Nov 17","TBC","Pickup FC","First Touch FC"),
  ("Nov 17","TBC","Wanderers","Ummah FC"),
 ]
+# The league site's table disagrees with its own results for two teams' goal difference
+# (GIPP +8 vs +12 from scores, Sharples +4 vs +1). Results are used; this is the sensitivity check.
+LEAGUE_GD = {GIPP: 8, "Sharples Wednesday": 4}
 NEXT = FUTURE[0]          # the game the scenario cards condition on
 N = 200_000; PRIOR = 3.0  # sims; games of league-average play blended into each rating
 # --------------------------------------
@@ -80,7 +75,7 @@ avg = sum(hg+ag for *_,hg,ag in KNOWN)/(2*len(KNOWN))
 att = {k:(GF[k]+PRIOR*avg)/((cnt[k]+PRIOR)*avg) for k in TEAMS}
 dfn = {k:(GA[k]+PRIOR*avg)/((cnt[k]+PRIOR)*avg) for k in TEAMS}
 
-rng = np.random.default_rng(20261104)
+rng = np.random.default_rng(20261109)
 def draw(h,a,n=N): return rng.poisson(att[h]*dfn[a]*avg,n), rng.poisson(att[a]*dfn[h]*avg,n)
 def draw_winner(h,a,who):
     hg,ag = draw(h,a)
@@ -105,8 +100,8 @@ nh, na = next((hg,ag) for kind,h,a,x,hg,ag in G if (h,a)==(NEXT[2],NEXT[3]))
 gipp_home = NEXT[2]==GIPP
 next_res = np.where((nh>na) if gipp_home else (na>nh), "win", np.where(nh==na, "draw", "lose"))
 
-def finish(include_nov17):
-    pts=np.tile(base_pts,(N,1)).astype(np.int64); gd=np.tile(base_gd,(N,1)); gf=np.tile(base_gf,(N,1))
+def finish(include_nov17, gd0=None):
+    pts=np.tile(base_pts,(N,1)).astype(np.int64); gd=np.tile(base_gd if gd0 is None else gd0,(N,1)); gf=np.tile(base_gf,(N,1))
     for kind,h,a,x,hg,ag in G:
         if kind=="future" and x=="Nov 17" and not include_nov17: continue
         hi,ai=idx[h],idx[a]
@@ -165,7 +160,12 @@ for name,inc in (("all",True),("noNov17",False)):
     c = Counter()
     for i in qm: c[TEAMS[int(np.nonzero(pos[i]==partner[int(pos[i,gi])])[0][0])]] += 1
     tot = sum(c.values()); S['semi_opp'] = {k:v/tot for k,v in c.most_common()}
+    lg = base_gd.copy()
+    for k,v in LEAGUE_GD.items(): lg[idx[k]] = v
+    _,_,pos2 = finish(inc, lg)
+    S['leagueGD'] = dict(qual=float((pos2[:,gi]<4).mean()), lose_qual=float((pos2[next_res=="lose",gi]<4).mean()), seeds=[float((pos2[:,gi]==s).mean()) for s in range(10)])
     out[name] = S
+    print("  league-table GD variant: qual %.2f%%, if lose %.1f%%" % (100*S['leagueGD']['qual'],100*S['leagueGD']['lose_qual']))
     print("\n== scenario %s ==" % name)
     for k in order: print("  %-28s qual %5.1f%%  top seed %5.1f%%  E[pts] %.1f  max %d" % (k,100*S['qual'][k],100*S['seed1'][k],S['exp_pts'][k],S['maxpts'][k]))
     print("  GIPP seeds:", ["%.1f"%(100*x) for x in S['seeds'][GIPP][:6]])

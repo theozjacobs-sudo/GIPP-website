@@ -3,7 +3,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Caveat:wght@600;700&display=swap">
 <style>
-/* Layout: one long navy column, orange hero, every section driven by MODEL data and a single scenario toggle. */
+/* Layout: one long navy column, orange hero, every section driven by MODEL data . */
 :root {
   --navy: #0d1220; --navy-2: #141b2e; --navy-3: #1c2440;
   --orange: #e8722a; --orange-chart: #e06a22; --orange-deep: #b8511a; --red: #c2402a;
@@ -172,9 +172,9 @@ td .mark { color: var(--cream-35); font-weight: 400; }
   <div class="wrap">
     <p class="eyebrow">Good Intent Poor Product F.C. · 9-a-side · Pier 5 · Fall 2026 · Playoff Race</p>
     <h1>Don't lose,<br>and we're in.</h1>
-    <p class="kicker">Monte Carlo playoff model, updated after the Nov 3 round. Top four of ten make the Nov 17 semi-finals: 1st v 4th, 2nd v 3rd. One game left for us.</p>
-    <p class="scoreline">Last two: beat Wanderers 2–1 · drew with 99c Fresh</p>
-    <p class="hand">"it was 2–1. tell your friend."</p>
+    <p class="kicker">Monte Carlo playoff model, updated with every result through Nov 3. Top four of ten make the Nov 17 semi-finals: 1st v 4th, 2nd v 3rd. Tuesday is the last round.</p>
+    <p class="scoreline">Last two: drew 99c Fresh 2–2 · beat Wanderers 2–1</p>
+    <p class="hand">"one point. that's the whole job."</p>
     <div class="matchcard" role="group" aria-label="Next match">
       <span class="vs">First Touch FC vs GIPP</span>
       <span class="when">Tue Nov 10 · 7:00 pm · Pier 5, Brooklyn</span>
@@ -186,17 +186,8 @@ td .mark { color: var(--cream-35); font-weight: 400; }
 
   <div class="tiles" id="tiles" aria-live="polite">
     <div class="tile"><div class="n" id="t-qual">–</div><div class="l">chance we make the semis</div></div>
-    <div class="tile"><div class="n" id="t-s2">–</div><div class="l">chance we're the 2 seed (play the 3rd-place team)</div></div>
-    <div class="tile"><div class="n" id="t-s3">–</div><div class="l">chance we're the 3 seed (play the 2nd-place team)</div></div>
-  </div>
-
-  <div class="toggle">
-    <div class="q">Do the three leftover games on Nov 17 count toward seeding?
-      <small>The league site lists Nov 17 as "Playoffs (1v4, 2v3) &amp; remaining season games". Three round-robin games are still unscheduled: 99c v Corinthians, Pickup v First Touch, Wanderers v Ummah. If they're played before the semis they count. If the bracket is set after Nov 10, they don't. Our odds are the same either way; it changes the scrap for 4th.</small></div>
-    <div class="seg" role="group" aria-label="Scenario">
-      <button type="button" id="btn-all" aria-pressed="true">They count</button>
-      <button type="button" id="btn-no" aria-pressed="false">They don't</button>
-    </div>
+    <div class="tile"><div class="n" id="t-s2">–</div><div class="l">chance we finish 2nd or 3rd (they play each other)</div></div>
+    <div class="tile"><div class="n" id="t-s3">–</div><div class="l">chance we finish 4th and draw 99c</div></div>
   </div>
 
   <section aria-labelledby="s-scn">
@@ -215,14 +206,14 @@ td .mark { color: var(--cream-35); font-weight: 400; }
 
   <section aria-labelledby="s-table">
     <h2 id="s-table">The Table</h2>
-    <p class="h2-sub">Standings after the Nov 3 round</p>
+    <p class="h2-sub">Standings going into the final round, rebuilt from every posted result</p>
     <div class="tablebox">
       <table>
         <thead><tr><th>#</th><th>Team</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GF</th><th>GA</th><th>GD</th><th>Pts</th><th>Left</th><th>Max</th><th>E[Pts]</th></tr></thead>
         <tbody id="tbody"></tbody>
       </table>
     </div>
-    <p class="note" style="margin-top:12px"><span class="mark">†</span> One Nov 3 result entered as a win only; goals for that game aren't in GF/GA/GD yet. <span class="mark">‡</span> Played on Oct 27 but the result hasn't been entered, so it isn't in P or Pts; the model simulates it. Our own row is complete. The 99c draw is entered as 1–1 (exact score unconfirmed; goal difference is unaffected).</p>
+    <p class="note" style="margin-top:12px">Rebuilt from the scorelines, not copied from the league site. The site's table matches on points everywhere but disagrees with its own results on two goal differences: it has us at +8 (results say +12) and Sharples at +4 (results say +1). That only matters if we lose; see the Lose card.</p>
   </section>
 
   <section aria-labelledby="s-pos">
@@ -259,8 +250,8 @@ td .mark { color: var(--cream-35); font-weight: 400; }
 
   <div class="method">
     <p><strong>How the model works.</strong> <span id="m-n"></span> Monte Carlo simulations of every unresolved game. Each team gets an attack and defence rating from its season goals for and against relative to the league average (<span id="m-avg"></span> goals per team per game), shrunk toward average with three games' worth of prior. Scorelines are drawn from independent Poisson distributions. Everything is played at Pier 5, so there's no home advantage. The final table is scored points → goal difference → goals scored, then a coin flip; the league hasn't published its tiebreakers.</p>
-    <p><strong>What's entered and what isn't.</strong> All scorelines through Oct 20, our Oct 27 draw with 99c and our 2–1 win over Wanderers on Nov 3 are in. The other three Nov 3 games (99c beat Ummah, AG Wave beat Corinthians, Sharples beat Relaunch) are in as wins without scores. The three Oct 27 games we weren't in have no result entered and are simulated. None of that touches the exact-search clinch rules above, which hold for every possible combination of those results.</p>
-    <p><strong>The Nov 17 toggle</strong> only changes who 99c, Corinthians, Pickup, Wanderers, First Touch and Ummah play on Nov 17. The forfeit (First Touch 0–3 Sharples, Sep 22) is counted as played. Data compiled Nov 4, 2026.</p>
+    <p><strong>What's entered.</strong> Every scoreline through Nov 3, including the Oct 27 and Nov 3 results that were missing last time and our 99c draw corrected to 2–2. The forfeit (First Touch 0–3 Sharples, Sep 22) is counted as played. The clinch rules come from an exact search of every remaining result, not the simulation.</p>
+    <p><strong>Caveats.</strong> If the league breaks ties on head-to-head rather than goal difference, a loss is riskier: we lost to both Relaunch and Sharples. The two leftover round-robin games (Pickup v First Touch, Wanderers v Ummah) are listed for Nov 17 and can't affect the top four. Data compiled Nov 9, 2026.</p>
   </div>
 
 </main>
@@ -275,7 +266,7 @@ var MODEL = __MODEL_JSON__;
   var ORD = ["1st","2nd","3rd","4th","5th","6th","7th","8th","9th","10th"];
   var scenario = "all";
   function pct(x, d) { return (100 * x).toFixed(d == null ? 0 : d) + "%"; }
-  function pctCap(x) { var v = 100 * x; if (v > 99.95) return "≈100%"; if (v < 0.05 && v > 0) return "<0.1%"; return v.toFixed(v < 10 && v > 0 ? 1 : 0) + "%"; }
+  function pctCap(x) { var v = 100 * x; if (v > 99.95) return "≈100%"; if (v < 0.05 && v > 0) return "<0.1%"; return v.toFixed((v < 10 && v > 0) || (v > 99 && v < 100) ? 1 : 0) + "%"; }
   function esc(s) { return s.replace(/&/g, "&amp;").replace(/</g, "&lt;"); }
   function raf(fn) { requestAnimationFrame(function () { requestAnimationFrame(fn); }); }
   function listNames(arr) { var s = arr.map(function (t) { return SHORT[t]; }); return s.length <= 1 ? s.join("") : s.slice(0, -1).join(", ") + " and " + s[s.length - 1]; }
@@ -299,8 +290,8 @@ var MODEL = __MODEL_JSON__;
     var myPts = MODEL.table[ME].pts, myMax = S.maxpts[ME];
     var leaderPts = MODEL.table["99c Fresh FC"].pts;
     document.getElementById("t-qual").textContent = pctCap(S.qual[ME]);
-    document.getElementById("t-s2").textContent = pct(mine[1]);
-    document.getElementById("t-s3").textContent = pct(mine[2]);
+    document.getElementById("t-s2").textContent = pctCap(mine[1] + mine[2]);
+    document.getElementById("t-s3").textContent = pctCap(mine[3]);
 
     // scenario cards
     var over17 = MODEL.order.filter(function (t) { return t !== ME && S.maxpts[t] > myPts + 1; });
@@ -308,8 +299,8 @@ var MODEL = __MODEL_JSON__;
     var tie19 = MODEL.order.filter(function (t) { return t !== ME && S.maxpts[t] === myPts + 3; });
     var why = {
       win: (myPts + 3) + " points. " + (over19.length ? listNames(over19) + (over19.length > 1 ? " are" : " is") + " the only side that can finish above us" : "Nobody can finish above us") + (tie19.length ? ", and " + listNames(tie19) + " can only tie, which our goal difference settles." : "."),
-      draw: (myPts + 1) + " points. Only " + listNames(over17) + " can get past " + (myPts + 1) + ", and four go through. Worst case we're the 4 seed and play 99c.",
-      lose: myPts + " points, stuck where we are. Up to " + S.clinch.lose.worst + " teams could finish level or above on points, so it isn't mathematically safe. In practice our +" + MODEL.table[ME].gd + " goal difference wins every tie the model can produce."
+      draw: (myPts + 1) + " points. Only " + listNames(over17) + " can get past " + (myPts + 1) + ". Worst case we finish 3rd, and 2nd plays 3rd anyway.",
+      lose: myPts + " points, stuck where we are. Up to " + S.clinch.lose.worst + " teams could finish level or above on points, so it comes down to goal difference. Ours is +" + MODEL.table[ME].gd + " from the results, which survives in " + pct(S.cond.lose.p_qual, 1) + " of sims. The league site's table has us at +8; on that number it's " + pct(S.leagueGD.lose_qual) + "."
     };
     if (S.clinch.lose.guaranteed) why.lose = myPts + " points, and still in: at most " + S.clinch.lose.worst + " teams can finish level or above, and we'd hold the tiebreak on goal difference in all but the wildest scorelines.";
     var sc = document.getElementById("scenarios"); sc.innerHTML = "";
@@ -321,7 +312,7 @@ var MODEL = __MODEL_JSON__;
         seedBar(c.seeds) + '<div class="why">' + why[k] + '</div>';
       sc.appendChild(d);
     });
-    var ft = MODEL.table["First Touch FC"]; document.getElementById("scn-note").textContent = "First Touch are winless this season (" + ft.w + "W " + ft.d + "D " + ft.l + "L, " + ft.pts + " points). A point is all we need, and even a loss leaves no realistic way out of the top four. What Tuesday really decides is the 2 seed: win and we almost certainly play the 3rd-place team rather than the 2nd.";
+    var ft = MODEL.table["First Touch FC"]; document.getElementById("scn-note").textContent = "First Touch are winless this season (" + ft.w + "W " + ft.d + "D " + ft.l + "L, " + ft.pts + " points). A point is all we need. Second and third play each other, so the seed barely matters; the thing to avoid is 4th, which means 99c, and only a loss puts that in play.";
 
     // field
     var pc = document.getElementById("probchart"); pc.innerHTML = "";
@@ -372,10 +363,10 @@ var MODEL = __MODEL_JSON__;
     function li(ok, html) { var e = document.createElement("li"); e.className = ok ? "ok" : ""; e.innerHTML = html; cl.appendChild(e); }
     li(S.clinch.win.guaranteed, "<b>Win</b> → " + (myPts + 3) + " points. " + (S.clinch.win.guaranteed ? "Guaranteed in." : "Not guaranteed.") + " At most " + S.clinch.win.worst + " teams can finish level or above, and four go through.");
     li(S.clinch.draw.guaranteed, "<b>Draw</b> → " + (myPts + 1) + " points. " + (S.clinch.draw.guaranteed ? "Guaranteed in." : "Not guaranteed.") + " Only " + listNames(over17) + " can finish above " + (myPts + 1) + ".");
-    li(S.clinch.lose.guaranteed, "<b>Lose</b> → " + myPts + " points. " + (S.clinch.lose.guaranteed ? "Still guaranteed in: at most " + S.clinch.lose.worst + " teams can finish level or above." : "Not mathematically safe: up to " + S.clinch.lose.worst + " teams could finish level or above on points. Goal difference decides it, and ours is +" + MODEL.table[ME].gd + "."));
+    li(S.clinch.lose.guaranteed, "<b>Lose</b> → " + myPts + " points. " + (S.clinch.lose.guaranteed ? "Still guaranteed in: at most " + S.clinch.lose.worst + " teams can finish level or above." : "Not mathematically safe: up to " + S.clinch.lose.worst + " teams could finish level or above on points. Goal difference decides it: ours is +" + MODEL.table[ME].gd + " from the results, +8 on the league site."));
     li(false, "<b>Top seed</b>: gone. 99c are on " + leaderPts + " and we max out at " + myMax + ".");
     var catchers = MODEL.order.filter(function (t) { return t !== ME && t !== "99c Fresh FC" && S.maxpts[t] >= myMax; });
-    li(true, "<b>2 seed</b>: " + pct(mine[1]) + ". " + (catchers.length ? "Only " + listNames(catchers) + " can still reach our maximum of " + myMax + "." : "Nobody else can reach our maximum of " + myMax + "."));
+    li(true, "<b>2nd place</b>: " + pct(mine[1]) + ". " + (catchers.length ? "Only " + listNames(catchers) + " can still reach our maximum of " + myMax + "." : "Nobody else can reach our maximum of " + myMax + "."));
     document.getElementById("magic").textContent = "magic number: 1 point";
 
     // semi opponent
@@ -392,7 +383,7 @@ var MODEL = __MODEL_JSON__;
       hover(track, "<strong>" + esc(t) + "</strong><br>" + pct(p, 1) + " of the simulations where we qualify");
       raf(function () { fill.style.width = (100 * p / omax) + "%"; });
     });
-    document.getElementById("semi-note").textContent = "Bars are scaled to the most likely opponent. We're almost certainly the 2 or 3 seed, so we meet whoever lands next to us: " + SHORT[opps[0]] + " in " + pct(S.semi_opp[opps[0]]) + " of the simulations where we go through.";
+    document.getElementById("semi-note").textContent = "Bars are scaled to the most likely opponent. We're almost certainly 2nd or 3rd, so we meet whoever lands next to us: " + SHORT[opps[0]] + " in " + pct(S.semi_opp[opps[0]]) + " of the simulations where we go through.";
 
     // fixtures
     var fx = document.getElementById("fixtures"); fx.innerHTML = "";
@@ -402,7 +393,7 @@ var MODEL = __MODEL_JSON__;
       var box = document.createElement("div"); box.className = "day";
       var pending = byDay[d][0].status === "pending";
       var h = document.createElement("h3");
-      h.innerHTML = esc(d) + "<em>" + (pending ? "played · results not entered yet · model odds shown" : d === "Nov 17" ? (scenario === "noNov17" ? "unscheduled · not counted in this scenario" : "unscheduled on the league site · inferred from the round robin") : "Pier 5") + "</em>";
+      h.innerHTML = esc(d) + "<em>" + (pending ? "played · results not entered yet · model odds shown" : d === "Nov 17" ? "same night as the semis · can't change the top four" : "Pier 5") + "</em>";
       box.appendChild(h);
       byDay[d].forEach(function (f) {
         var isMe = f.home === ME || f.away === ME;
@@ -424,12 +415,6 @@ var MODEL = __MODEL_JSON__;
 
   document.getElementById("m-n").textContent = MODEL.N.toLocaleString();
   document.getElementById("m-avg").textContent = MODEL.avg.toFixed(2);
-  var bAll = document.getElementById("btn-all"), bNo = document.getElementById("btn-no");
-  function setScenario(s) { scenario = s; bAll.setAttribute("aria-pressed", s === "all"); bNo.setAttribute("aria-pressed", s === "noNov17"); try { localStorage.setItem("gipp-scn2", s); } catch (e) {} render(); }
-  bAll.addEventListener("click", function () { setScenario("all"); });
-  bNo.addEventListener("click", function () { setScenario("noNov17"); });
-  try { var saved = localStorage.getItem("gipp-scn2"); if (saved === "noNov17") scenario = "noNov17"; } catch (e) {}
-  bAll.setAttribute("aria-pressed", scenario === "all"); bNo.setAttribute("aria-pressed", scenario === "noNov17");
   render();
 })();
 </script>

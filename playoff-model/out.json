@@ -2,13 +2,13 @@
  "all": {
   "qual": {
    "99c Fresh FC": 1.0,
-   "Good Intent Poor Product FC": 1.0,
-   "Relaunch FA": 0.979135,
-   "Sharples Wednesday": 0.301035,
-   "Corinthians": 0.074315,
-   "AG Wave & Co": 0.37598,
-   "Pickup FC": 0.269435,
-   "Wanderers": 0.0001,
+   "Good Intent Poor Product FC": 0.999925,
+   "Relaunch FA": 0.74024,
+   "Sharples Wednesday": 0.4652,
+   "Corinthians": 0.016345,
+   "AG Wave & Co": 0.778255,
+   "Pickup FC": 3.5e-05,
+   "Wanderers": 0.0,
    "First Touch FC": 0.0,
    "Ummah FC": 0.0
   },
@@ -39,10 +39,10 @@
    ],
    "Good Intent Poor Product FC": [
     0.0,
-    0.5528,
-    0.44434,
-    0.00286,
-    0.0,
+    0.87822,
+    0.116725,
+    0.00498,
+    7.5e-05,
     0.0,
     0.0,
     0.0,
@@ -51,87 +51,87 @@
    ],
    "Relaunch FA": [
     0.0,
-    0.435405,
-    0.469675,
-    0.074055,
-    0.01813,
-    0.00266,
-    7.5e-05,
+    0.004465,
+    0.33366,
+    0.402115,
+    0.218025,
+    0.041585,
+    0.00015,
     0.0,
     0.0,
     0.0
    ],
    "Sharples Wednesday": [
     0.0,
-    5e-06,
-    0.010475,
-    0.290555,
-    0.307945,
-    0.222495,
-    0.158765,
-    0.00974,
-    2e-05,
+    0.00016,
+    0.091615,
+    0.373425,
+    0.49839,
+    0.033945,
+    0.002465,
+    0.0,
+    0.0,
     0.0
    ],
    "Corinthians": [
     0.0,
     0.0,
-    0.001925,
-    0.07239,
-    0.228945,
-    0.375865,
-    0.29637,
-    0.024065,
-    0.00044,
+    0.00133,
+    0.015015,
+    0.06997,
+    0.79496,
+    0.11793,
+    0.000795,
+    0.0,
     0.0
    ],
    "AG Wave & Co": [
     0.0,
-    0.011735,
-    0.0646,
-    0.299645,
-    0.2591,
-    0.211775,
-    0.14801,
-    0.005135,
+    0.117155,
+    0.45667,
+    0.20443,
+    0.20557,
+    0.016175,
+    0.0,
+    0.0,
     0.0,
     0.0
    ],
    "Pickup FC": [
     0.0,
-    5.5e-05,
-    0.008985,
-    0.260395,
-    0.1826,
-    0.166775,
-    0.283625,
-    0.087415,
-    0.01015,
+    0.0,
+    0.0,
+    3.5e-05,
+    0.00796,
+    0.10961,
+    0.56399,
+    0.306865,
+    0.01154,
     0.0
    ],
    "Wanderers": [
     0.0,
     0.0,
     0.0,
-    0.0001,
-    0.00295,
-    0.01793,
-    0.10394,
-    0.80756,
-    0.065795,
-    0.001725
+    0.0,
+    1e-05,
+    0.003725,
+    0.3107,
+    0.672045,
+    0.013445,
+    7.5e-05
    ],
    "First Touch FC": [
     0.0,
     0.0,
     0.0,
     0.0,
-    0.00033,
-    0.0025,
-    0.009215,
-    0.05911,
-    0.791675,
-    0.13717
+    0.0,
+    0.0,
+    0.004765,
+    0.019,
+    0.83614,
+    0.140095
    ],
    "Ummah FC": [
     0.0,
@@ -141,32 +141,32 @@
     0.0,
     0.0,
     0.0,
-    0.006975,
-    0.13192,
-    0.861105
+    0.001295,
+    0.138875,
+    0.85983
    ]
   },
   "exp_pts": {
-   "99c Fresh FC": 22.28737,
-   "Good Intent Poor Product FC": 18.482775,
-   "Relaunch FA": 17.70701,
-   "Sharples Wednesday": 13.53693,
-   "Corinthians": 12.52005,
-   "AG Wave & Co": 13.90404,
-   "Pickup FC": 12.08835,
-   "Wanderers": 9.1495,
-   "First Touch FC": 4.967675,
-   "Ummah FC": 2.550465
+   "99c Fresh FC": 22.399415,
+   "Good Intent Poor Product FC": 18.46986,
+   "Relaunch FA": 15.30915,
+   "Sharples Wednesday": 15.576785,
+   "Corinthians": 13.448335,
+   "AG Wave & Co": 16.76932,
+   "Pickup FC": 9.918465,
+   "Wanderers": 9.497755,
+   "First Touch FC": 4.27398,
+   "Ummah FC": 2.18208
   },
   "cond": {
    "win": {
-    "p_result": 0.78244,
+    "p_result": 0.777135,
     "p_qual": 1.0,
     "p_seed1": 0.0,
     "seeds": [
      0.0,
-     0.6543632738612546,
-     0.34563672613874546,
+     1.0,
+     0.0,
      0.0,
      0.0,
      0.0,
@@ -177,13 +177,13 @@
     ]
    },
    "draw": {
-    "p_result": 0.135455,
+    "p_result": 0.138455,
     "p_qual": 1.0,
     "p_seed1": 0.0,
     "seeds": [
      0.0,
-     0.24539514968070578,
-     0.7546048503192943,
+     0.4756419053121953,
+     0.5243580946878047,
      0.0,
      0.0,
      0.0,
@@ -194,15 +194,15 @@
     ]
    },
    "lose": {
-    "p_result": 0.082105,
-    "p_qual": 1.0,
+    "p_result": 0.08441,
+    "p_qual": 0.999111479682502,
     "p_seed1": 0.0,
     "seeds": [
      0.0,
-     0.09207721819621217,
-     0.8730893368247975,
-     0.03483344497899032,
-     0.0,
+     0.41736761047269283,
+     0.522746120127947,
+     0.05899774908186234,
+     0.0008885203174979268,
      0.0,
      0.0,
      0.0,
@@ -213,30 +213,29 @@
   },
   "bypts": {
    "16": {
-    "p": 0.082105,
-    "qual": 1.0
+    "p": 0.08441,
+    "qual": 0.999111479682502
    },
    "17": {
-    "p": 0.135455,
+    "p": 0.138455,
     "qual": 1.0
    },
    "19": {
-    "p": 0.78244,
+    "p": 0.777135,
     "qual": 1.0
    }
   },
   "semi_opp": {
-   "Relaunch FA": 0.9014666666666666,
-   "AG Wave & Co": 0.07421666666666667,
-   "Sharples Wednesday": 0.0105,
-   "Pickup FC": 0.009183333333333333,
-   "99c Fresh FC": 0.00265,
-   "Corinthians": 0.0019833333333333335
+   "AG Wave & Co": 0.5663166666666667,
+   "Relaunch FA": 0.33665,
+   "Sharples Wednesday": 0.09071666666666667,
+   "99c Fresh FC": 0.004966666666666667,
+   "Corinthians": 0.00135
   },
   "clinch": {
    "win": {
     "guaranteed": true,
-    "worst": 2,
+    "worst": 1,
     "pts": 19
    },
    "draw": {
@@ -253,13 +252,13 @@
   "maxpts": {
    "99c Fresh FC": 23,
    "Good Intent Poor Product FC": 19,
-   "Relaunch FA": 19,
+   "Relaunch FA": 16,
    "Sharples Wednesday": 16,
    "Corinthians": 16,
    "AG Wave & Co": 18,
-   "Pickup FC": 16,
+   "Pickup FC": 13,
    "Wanderers": 13,
-   "First Touch FC": 12,
+   "First Touch FC": 9,
    "Ummah FC": 7
   },
   "left": {
@@ -273,17 +272,33 @@
    "Wanderers": 2,
    "First Touch FC": 2,
    "Ummah FC": 2
+  },
+  "leagueGD": {
+   "qual": 0.984525,
+   "lose_qual": 0.8166686411562611,
+   "seeds": [
+    0.0,
+    0.84892,
+    0.09894,
+    0.036665,
+    0.015475,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
   }
  },
  "noNov17": {
   "qual": {
    "99c Fresh FC": 1.0,
-   "Good Intent Poor Product FC": 1.0,
-   "Relaunch FA": 0.987275,
-   "Sharples Wednesday": 0.365245,
-   "Corinthians": 0.050265,
-   "AG Wave & Co": 0.43939,
-   "Pickup FC": 0.157825,
+   "Good Intent Poor Product FC": 0.999925,
+   "Relaunch FA": 0.740275,
+   "Sharples Wednesday": 0.46533,
+   "Corinthians": 0.016345,
+   "AG Wave & Co": 0.778125,
+   "Pickup FC": 0.0,
    "Wanderers": 0.0,
    "First Touch FC": 0.0,
    "Ummah FC": 0.0
@@ -315,10 +330,10 @@
    ],
    "Good Intent Poor Product FC": [
     0.0,
-    0.55288,
-    0.4446,
-    0.00252,
-    0.0,
+    0.87822,
+    0.11673,
+    0.004975,
+    7.5e-05,
     0.0,
     0.0,
     0.0,
@@ -327,11 +342,11 @@
    ],
    "Relaunch FA": [
     0.0,
-    0.43538,
-    0.47551,
-    0.076385,
-    0.012725,
-    0.0,
+    0.004465,
+    0.333655,
+    0.402155,
+    0.218555,
+    0.04117,
     0.0,
     0.0,
     0.0,
@@ -339,36 +354,36 @@
    ],
    "Sharples Wednesday": [
     0.0,
-    5e-06,
-    0.01072,
-    0.35452,
-    0.3309,
-    0.190315,
-    0.11352,
-    2e-05,
+    0.00016,
+    0.09156,
+    0.37361,
+    0.505635,
+    0.029035,
+    0.0,
+    0.0,
     0.0,
     0.0
    ],
    "Corinthians": [
     0.0,
     0.0,
+    0.00133,
+    0.015015,
+    0.070035,
+    0.91362,
     0.0,
-    0.050265,
-    0.319495,
-    0.43277,
-    0.197445,
-    2.5e-05,
+    0.0,
     0.0,
     0.0
    ],
    "AG Wave & Co": [
     0.0,
-    0.011735,
-    0.06917,
-    0.358485,
-    0.28171,
-    0.21711,
-    0.06179,
+    0.117155,
+    0.456725,
+    0.204245,
+    0.2057,
+    0.016175,
+    0.0,
     0.0,
     0.0,
     0.0
@@ -377,12 +392,12 @@
     0.0,
     0.0,
     0.0,
-    0.157825,
-    0.05517,
-    0.1598,
-    0.586095,
-    0.04054,
-    0.00057,
+    0.0,
+    0.0,
+    0.0,
+    0.82746,
+    0.17254,
+    0.0,
     0.0
    ],
    "Wanderers": [
@@ -391,10 +406,10 @@
     0.0,
     0.0,
     0.0,
-    5e-06,
-    0.03706,
-    0.912325,
-    0.05061,
+    0.0,
+    0.17254,
+    0.82746,
+    0.0,
     0.0
    ],
    "First Touch FC": [
@@ -404,10 +419,10 @@
     0.0,
     0.0,
     0.0,
-    0.00409,
-    0.04709,
-    0.88572,
-    0.0631
+    0.0,
+    0.0,
+    0.940005,
+    0.059995
    ],
    "Ummah FC": [
     0.0,
@@ -418,31 +433,31 @@
     0.0,
     0.0,
     0.0,
-    0.0631,
-    0.9369
+    0.059995,
+    0.940005
    ]
   },
   "exp_pts": {
-   "99c Fresh FC": 20.0,
-   "Good Intent Poor Product FC": 18.482775,
-   "Relaunch FA": 17.70701,
-   "Sharples Wednesday": 13.53693,
-   "Corinthians": 11.980795,
-   "AG Wave & Co": 13.90404,
-   "Pickup FC": 10.08732,
-   "Wanderers": 7.3471,
-   "First Touch FC": 4.188905,
-   "Ummah FC": 1.543035
+   "99c Fresh FC": 22.399415,
+   "Good Intent Poor Product FC": 18.46986,
+   "Relaunch FA": 15.30915,
+   "Sharples Wednesday": 15.576785,
+   "Corinthians": 13.448335,
+   "AG Wave & Co": 16.76932,
+   "Pickup FC": 8.031695,
+   "Wanderers": 7.53135,
+   "First Touch FC": 3.391685,
+   "Ummah FC": 1.328555
   },
   "cond": {
    "win": {
-    "p_result": 0.78244,
+    "p_result": 0.777135,
     "p_qual": 1.0,
     "p_seed1": 0.0,
     "seeds": [
      0.0,
-     0.6544207862583713,
-     0.34557921374162875,
+     1.0,
+     0.0,
      0.0,
      0.0,
      0.0,
@@ -453,13 +468,13 @@
     ]
    },
    "draw": {
-    "p_result": 0.135455,
+    "p_result": 0.138455,
     "p_qual": 1.0,
     "p_seed1": 0.0,
     "seeds": [
      0.0,
-     0.24543206230851575,
-     0.7545679376914842,
+     0.4756419053121953,
+     0.5243580946878047,
      0.0,
      0.0,
      0.0,
@@ -470,15 +485,15 @@
     ]
    },
    "lose": {
-    "p_result": 0.082105,
-    "p_qual": 1.0,
+    "p_result": 0.08441,
+    "p_qual": 0.999111479682502,
     "p_seed1": 0.0,
     "seeds": [
      0.0,
-     0.09244260398270507,
-     0.8768649899518909,
-     0.030692406065404056,
-     0.0,
+     0.41736761047269283,
+     0.5228053548157802,
+     0.05893851439402914,
+     0.0008885203174979268,
      0.0,
      0.0,
      0.0,
@@ -489,28 +504,29 @@
   },
   "bypts": {
    "16": {
-    "p": 0.082105,
-    "qual": 1.0
+    "p": 0.08441,
+    "qual": 0.999111479682502
    },
    "17": {
-    "p": 0.135455,
+    "p": 0.138455,
     "qual": 1.0
    },
    "19": {
-    "p": 0.78244,
+    "p": 0.777135,
     "qual": 1.0
    }
   },
   "semi_opp": {
-   "Relaunch FA": 0.9075333333333333,
-   "AG Wave & Co": 0.07933333333333334,
-   "Sharples Wednesday": 0.010733333333333333,
-   "99c Fresh FC": 0.0024
+   "AG Wave & Co": 0.5663666666666667,
+   "Relaunch FA": 0.33665,
+   "Sharples Wednesday": 0.09065,
+   "99c Fresh FC": 0.0049833333333333335,
+   "Corinthians": 0.00135
   },
   "clinch": {
    "win": {
     "guaranteed": true,
-    "worst": 2,
+    "worst": 1,
     "pts": 19
    },
    "draw": {
@@ -520,131 +536,111 @@
    },
    "lose": {
     "guaranteed": false,
-    "worst": 4,
+    "worst": 5,
     "pts": 16
    }
   },
   "maxpts": {
-   "99c Fresh FC": 20,
+   "99c Fresh FC": 23,
    "Good Intent Poor Product FC": 19,
-   "Relaunch FA": 19,
+   "Relaunch FA": 16,
    "Sharples Wednesday": 16,
-   "Corinthians": 13,
+   "Corinthians": 16,
    "AG Wave & Co": 18,
-   "Pickup FC": 13,
+   "Pickup FC": 10,
    "Wanderers": 10,
-   "First Touch FC": 9,
+   "First Touch FC": 6,
    "Ummah FC": 4
   },
   "left": {
-   "99c Fresh FC": 0,
+   "99c Fresh FC": 1,
    "Good Intent Poor Product FC": 1,
    "Relaunch FA": 1,
    "Sharples Wednesday": 1,
-   "Corinthians": 0,
+   "Corinthians": 1,
    "AG Wave & Co": 1,
    "Pickup FC": 1,
    "Wanderers": 1,
    "First Touch FC": 1,
    "Ummah FC": 1
+  },
+  "leagueGD": {
+   "qual": 0.984535,
+   "lose_qual": 0.8167871105319275,
+   "seeds": [
+    0.0,
+    0.84894,
+    0.098885,
+    0.03671,
+    0.015465,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
   }
  },
  "fixtures": [
-  {
-   "date": "Oct 27",
-   "time": "7:00 pm",
-   "home": "Pickup FC",
-   "away": "Sharples Wednesday",
-   "status": "pending",
-   "ph": 0.446705,
-   "pd": 0.22254,
-   "pa": 0.330755,
-   "xh": 1.878233555062823,
-   "xa": 1.587447647203744
-  },
-  {
-   "date": "Oct 27",
-   "time": "7:55 pm",
-   "home": "AG Wave & Co",
-   "away": "Relaunch FA",
-   "status": "pending",
-   "ph": 0.15846,
-   "pd": 0.173545,
-   "pa": 0.667995,
-   "xh": 1.1738975117023895,
-   "xa": 2.5218649913771856
-  },
-  {
-   "date": "Oct 27",
-   "time": "9:40 pm",
-   "home": "Corinthians",
-   "away": "First Touch FC",
-   "status": "pending",
-   "ph": 0.589575,
-   "pd": 0.21207,
-   "pa": 0.198355,
-   "xh": 2.0233910924967833,
-   "xa": 1.0938517971038293
-  },
   {
    "date": "Nov 10",
    "time": "7:00 pm",
    "home": "First Touch FC",
    "away": "Good Intent Poor Product FC",
    "status": "future",
-   "ph": 0.082105,
-   "pd": 0.135455,
-   "pa": 0.78244,
-   "xh": 0.83756635087012,
-   "xa": 2.8235234831687155
+   "ph": 0.08441,
+   "pd": 0.138455,
+   "pa": 0.777135,
+   "xh": 0.8028806449498592,
+   "xa": 2.7279117782001703
   },
   {
    "date": "Nov 10",
-   "time": "7:55 pm",
+   "time": "7:50 pm",
    "home": "Sharples Wednesday",
    "away": "Ummah FC",
    "status": "future",
-   "ph": 0.729095,
-   "pd": 0.13484,
-   "pa": 0.136065,
-   "xh": 3.339480167528947,
-   "xa": 1.4920546932742051
+   "ph": 0.827375,
+   "pd": 0.09466,
+   "pa": 0.077965,
+   "xh": 3.9565543684865965,
+   "xa": 1.3228059251491122
   },
   {
    "date": "Nov 10",
-   "time": "8:45 pm",
+   "time": "8:35 pm",
    "home": "Wanderers",
    "away": "Relaunch FA",
    "status": "future",
-   "ph": 0.07456,
-   "pd": 0.12342,
-   "pa": 0.80202,
-   "xh": 0.8291906873614189,
-   "xa": 2.964800443458979
+   "ph": 0.12395,
+   "pd": 0.1595,
+   "pa": 0.71655,
+   "xh": 1.0313987022350397,
+   "xa": 2.6533165104542187
   },
   {
    "date": "Nov 10",
-   "time": "9:40 pm",
+   "time": "9:20 pm",
+   "home": "Corinthians",
+   "away": "99c Fresh FC",
+   "status": "future",
+   "ph": 0.098695,
+   "pd": 0.15225,
+   "pa": 0.749055,
+   "xh": 0.8224987636077629,
+   "xa": 2.5639229682947318
+  },
+  {
+   "date": "Nov 10",
+   "time": "10:10 pm",
    "home": "Pickup FC",
    "away": "AG Wave & Co",
    "status": "future",
-   "ph": 0.434815,
-   "pd": 0.22022,
-   "pa": 0.344965,
-   "xh": 1.893610905806027,
-   "xa": 1.6737975965618237
-  },
-  {
-   "date": "Nov 17",
-   "time": "TBC",
-   "home": "99c Fresh FC",
-   "away": "Corinthians",
-   "status": "future",
-   "ph": 0.704665,
-   "pd": 0.173375,
-   "pa": 0.12196,
-   "xh": 2.378775560482877,
-   "xa": 0.8915126878541509
+   "ph": 0.27757,
+   "pd": 0.198985,
+   "pa": 0.523445,
+   "xh": 1.6470898603919513,
+   "xa": 2.2875630857966835
   },
   {
    "date": "Nov 17",
@@ -652,11 +648,11 @@
    "home": "Pickup FC",
    "away": "First Touch FC",
    "status": "future",
-   "ph": 0.59361,
-   "pd": 0.2202,
-   "pa": 0.18619,
-   "xh": 1.893610905806027,
-   "xa": 0.9535326161342418
+   "ph": 0.551945,
+   "pd": 0.230935,
+   "pa": 0.21712,
+   "xh": 1.8117988464311465,
+   "xa": 1.0512509012256672
   },
   {
    "date": "Nov 17",
@@ -664,11 +660,11 @@
    "home": "Wanderers",
    "away": "Ummah FC",
    "status": "future",
-   "ph": 0.53741,
-   "pd": 0.19017,
-   "pa": 0.27242,
-   "xh": 2.4871766444937173,
-   "xa": 1.7684774575018471
+   "ph": 0.595445,
+   "pd": 0.18007,
+   "pa": 0.224485,
+   "xh": 2.594675558759914,
+   "xa": 1.5775522710886811
   }
  ],
  "table": {
@@ -677,11 +673,11 @@
    "w": 6,
    "d": 2,
    "l": 0,
-   "gf": 20,
-   "ga": 4,
-   "score_missing": 1,
+   "gf": 26,
+   "ga": 5,
+   "score_missing": 0,
    "pending": 0,
-   "gd": 16,
+   "gd": 21,
    "pts": 20
   },
   "Good Intent Poor Product FC": {
@@ -689,71 +685,71 @@
    "w": 5,
    "d": 1,
    "l": 2,
-   "gf": 21,
-   "ga": 9,
+   "gf": 22,
+   "ga": 10,
    "score_missing": 0,
    "pending": 0,
    "gd": 12,
    "pts": 16
   },
   "Relaunch FA": {
-   "p": 7,
+   "p": 8,
    "w": 4,
    "d": 1,
-   "l": 2,
+   "l": 3,
    "gf": 16,
-   "ga": 5,
+   "ga": 9,
    "score_missing": 0,
-   "pending": 1,
-   "gd": 11,
+   "pending": 0,
+   "gd": 7,
    "pts": 13
   },
   "Sharples Wednesday": {
-   "p": 7,
-   "w": 3,
+   "p": 8,
+   "w": 4,
    "d": 1,
    "l": 3,
-   "gf": 14,
-   "ga": 16,
+   "gf": 19,
+   "ga": 18,
    "score_missing": 0,
-   "pending": 1,
-   "gd": -2,
-   "pts": 10
+   "pending": 0,
+   "gd": 1,
+   "pts": 13
   },
   "Corinthians": {
-   "p": 7,
-   "w": 3,
+   "p": 8,
+   "w": 4,
    "d": 1,
    "l": 3,
-   "gf": 10,
-   "ga": 10,
-   "score_missing": 1,
-   "pending": 1,
-   "gd": 0,
-   "pts": 10
+   "gf": 12,
+   "ga": 13,
+   "score_missing": 0,
+   "pending": 0,
+   "gd": -1,
+   "pts": 13
   },
   "AG Wave & Co": {
-   "p": 7,
-   "w": 4,
+   "p": 8,
+   "w": 5,
    "d": 0,
    "l": 3,
-   "gf": 13,
-   "ga": 14,
-   "score_missing": 1,
-   "pending": 1,
-   "gd": -1,
-   "pts": 12
+   "gf": 20,
+   "ga": 15,
+   "score_missing": 0,
+   "pending": 0,
+   "gd": 5,
+   "pts": 15
   },
   "Pickup FC": {
-   "p": 6,
+   "p": 7,
    "w": 2,
    "d": 1,
-   "l": 3,
-   "gf": 9,
-   "ga": 8,
+   "l": 4,
+   "gf": 11,
+   "ga": 13,
    "score_missing": 0,
-   "pending": 1,
-   "gd": 1,
+   "pending": 0,
+   "gd": -2,
    "pts": 7
   },
   "Wanderers": {
@@ -769,15 +765,15 @@
    "pts": 7
   },
   "First Touch FC": {
-   "p": 6,
+   "p": 7,
    "w": 0,
    "d": 3,
-   "l": 3,
+   "l": 4,
    "gf": 5,
-   "ga": 14,
+   "ga": 15,
    "score_missing": 0,
-   "pending": 1,
-   "gd": -9,
+   "pending": 0,
+   "gd": -10,
    "pts": 3
   },
   "Ummah FC": {
@@ -786,45 +782,34 @@
    "d": 1,
    "l": 6,
    "gf": 6,
-   "ga": 23,
-   "score_missing": 1,
+   "ga": 28,
+   "score_missing": 0,
    "pending": 0,
-   "gd": -17,
+   "gd": -22,
    "pts": 1
   }
  },
  "order": [
   "99c Fresh FC",
   "Good Intent Poor Product FC",
-  "Relaunch FA",
   "AG Wave & Co",
-  "Corinthians",
+  "Relaunch FA",
   "Sharples Wednesday",
+  "Corinthians",
   "Pickup FC",
   "Wanderers",
   "First Touch FC",
   "Ummah FC"
  ],
- "avg": 1.8636363636363635,
+ "avg": 1.9210526315789473,
  "N": 200000,
  "prior": 3.0,
- "asof": "after the Nov 3 round",
+ "asof": "going into the Nov 10 round",
  "next": {
   "date": "Nov 10",
   "time": "7:00 pm",
   "home": "First Touch FC",
   "away": "Good Intent Poor Product FC"
  },
- "missing": [
-  {
-   "date": "Nov 3",
-   "home": "99c Fresh FC",
-   "away": "Ummah FC"
-  },
-  {
-   "date": "Nov 3",
-   "home": "AG Wave & Co",
-   "away": "Corinthians"
-  }
- ]
+ "missing": []
 }
